@@ -1,0 +1,127 @@
+/* --light-pink: #F2D7EE;
+  --dusty-mauve: #A5668B;
+  --dark-plum: #69306D;
+  --deep-navy: #0E103D;
+  --muted-rose: #A17A79;
+  --warm-taupe: #665250; */
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Georgia', serif;
+  background-image: url('backgroundimg.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  color: #F2D7EE;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.top-links {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 18px;
+  font-family: 'Georgia', serif;
+}
+
+.top-links a {
+  color: white;
+  background-color: #0E103D;
+  padding: 5px 10px;
+  border-radius: 10px;
+  text-decoration: none;
+  margin: 0 4px;
+  transition: 0.3s ease;
+}
+
+.top-links a:hover {
+  background-color: #665250;;
+}
+
+
+.container {
+  background-color: rgba(105, 48, 109, 0.1);
+  backdrop-filter: blur(12px);
+  border-radius: 15px;
+  width: 85%;
+  max-width: 1100px;
+  display: flex;
+  justify-content: space-between;
+  padding: 60px 50px;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
+}
+
+
+.left-box {
+  width: 50%;
+}
+
+.left-box h1 {
+  font-size: 60px;
+  margin: 0;
+  line-height: 1.2;
+  color: #0E103D;
+}
+
+.left-box .tagline {
+  margin-top: 30px;
+  font-size: 18px;
+  color: white;
+}
+
+
+.login-box {
+  width: 40%;
+  background-color: rgba(242, 215, 238, 0.6);
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(12px);
+  padding: 40px 30px;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-box h2 {
+  font-size: 50px;
+  margin-bottom: 40px;
+  color: #0E103D;
+}
+
+.login-box input {
+  width: 100%;
+  padding: 15px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 30px;
+  background-color: #a5668b;
+  color: white;
+  font-size: 20px;
+  text-align: center;
+  outline: none;
+}
+
+.login-box input::placeholder {
+  color: #f7e7f0;
+}
+
+.login-box button {
+  margin-top: 30px;
+  padding: 15px 40px;
+  background-color: #0E103D;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-size: 24px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.login-box button:hover {
+  background-color: #665250;
+}
