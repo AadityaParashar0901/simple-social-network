@@ -15,16 +15,22 @@ body {
   background-position: center;
   height: 100vh;
   color: #F2D7EE;
+}
+
+.center {
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
+}
+
+.full-height {
+  height: 100%;
 }
 
 .top-links {
-  position: absolute;
-  top: 20px;
-  right: 30px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
   font-size: 18px;
   font-family: 'Georgia', serif;
 }
@@ -49,20 +55,21 @@ body {
   backdrop-filter: blur(12px);
   border-radius: 15px;
   width: 85%;
-  max-width: 1100px;
+  max-width: 1200px;
   display: flex;
   justify-content: space-between;
   padding: 60px 50px;
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
 }
 
-
-.left-box {
-  width: 50%;
+@media (max-width: 960px) {
+  .container {
+    flex-direction: column;
+  }
 }
 
 .left-box h1 {
-  font-size: 60px;
+  font-size: 48px;
   margin: 0;
   line-height: 1.2;
   color: #0E103D;
@@ -76,11 +83,10 @@ body {
 
 
 .login-box {
-  width: 40%;
   background-color: rgba(242, 215, 238, 0.6);
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(12px);
-  padding: 40px 30px;
+  padding: 16px 32px;
   border-radius: 30px;
   display: flex;
   flex-direction: column;
@@ -88,8 +94,8 @@ body {
 }
 
 .login-box h2 {
-  font-size: 50px;
-  margin-bottom: 40px;
+  font-size: 48px;
+  margin-bottom: 20px;
   color: #0E103D;
 }
 
@@ -98,7 +104,7 @@ body {
   padding: 15px;
   margin: 10px 0;
   border: none;
-  border-radius: 30px;
+  border-radius: 32px;
   background-color: #a5668b;
   color: white;
   font-size: 20px;
@@ -111,12 +117,12 @@ body {
 }
 
 .login-box button {
-  margin-top: 30px;
-  padding: 15px 40px;
+  margin-top: 16px;
+  padding: 15px 20px;
   background-color: #0E103D;
   color: white;
   border: none;
-  border-radius: 50px;
+  border-radius: 32px;
   font-size: 24px;
   cursor: pointer;
   transition: 0.3s;
