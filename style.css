@@ -33,6 +33,7 @@ body {
   justify-content: flex-end;
   font-size: 18px;
   font-family: 'Georgia', serif;
+  margin-top: 2%;
 }
 
 .top-links a {
