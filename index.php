@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AppName - Login</title>
-  <link rel="stylesheet" href="styles.css"/>
+  <link rel="stylesheet" href="styles.css"/> <!-- Assuming 'styles.css' is your combined stylesheet -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet" />
 </head>
@@ -112,10 +112,19 @@
         <p>Please Enter Your Email to Contact you:</p>
         <input type="email" id="helpEmail" placeholder="Enter your email...">
       </div>
-      <button class="help-submit-btn">Submit</button>
+      <button class="help-submit-btn" id="submitQueryButton">Submit</button>
       <!-- New form elements end here -->
     </div>
-  </div> 
+  </div>
+
+  <!-- Submission Success Modal -->
+  <div id="submissionSuccessModal" class="modal">
+    <div class="modal-content">
+      <h2>Query Submitted!</h2>
+      <p>Your query has been successfully submitted. We will get back to you shortly!</p>
+      <button class="help-submit-btn" id="okButton">OK</button>
+    </div>
+  </div>
 
    <!-- Contact us model -->
 
