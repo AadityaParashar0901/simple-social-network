@@ -5,8 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AppName - Login</title>
-  <link rel="stylesheet" href="style.css"/>
-  <link rel="stylesheet" href="styleA.css">
+  <link rel="stylesheet" href="styles.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet" />
 </head>
@@ -80,7 +79,7 @@
          <input type="submit" class="btn" value="Sign In" name="signIn">
         </form>
         <p class="or">
-          ----------or--------
+          ---------OR--------
         </p>
         <div class="icons">
           <i class="fab fa-google"></i>
@@ -104,12 +103,17 @@
         <li>Your <strong>password</strong> is case-sensitive</li>
         <li>Please check your internet connection </li>
       </ul>
-      <p> If you have any other query type Here:</p>
-      <input id="helptext" type="text" placeholder="Type here">
-      <button id="querrysubmit" type="submit">Submit</button>
-      <p> Please Enter Your Email to Contact you:</p>
-      <input id="emailtext" type="text" placeholder="Enter mail here">
-      <button id="emailsubmit" type="submit">Submit</button>
+      <!-- New form elements start here -->
+      <div class="help-form-group">
+        <p>If you have any other query type Here:</p>
+        <input type="text" id="helpQuery" placeholder="Type your query...">
+      </div>
+      <div class="help-form-group">
+        <p>Please Enter Your Email to Contact you:</p>
+        <input type="email" id="helpEmail" placeholder="Enter your email...">
+      </div>
+      <button class="help-submit-btn">Submit</button>
+      <!-- New form elements end here -->
     </div>
   </div> 
 

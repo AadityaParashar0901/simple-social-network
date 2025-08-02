@@ -1,3 +1,7 @@
+/* Combined Stylesheet */
+
+/* --- From original style.css --- */
+
 /* Reset and base styles */
 * {
   margin: 0;
@@ -249,18 +253,19 @@ button:hover {
   color: hsl(227, 90%, 50%);
 }
 
-/* Modal styles */
+/* Modal styles (from style.css - these are the effective styles) */
 .modal {
   display: none;
   position: fixed;
-  z-index: 2000;
+  z-index: 2000; /* High z-index to ensure visibility */
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgba(14, 16, 61, 0.85);
-  backdrop-filter: blur(6px);
+  /* Changed background to transparent */
+  background-color: rgba(0, 0, 0, 0); /* Transparent background */
+  backdrop-filter: blur(8px); /* Increased blur for more effect */
   animation: fadeIn 0.4s ease forwards;
 }
 
@@ -270,16 +275,16 @@ button:hover {
 }
 
 .modal-content {
-  background-color: #fefefe;
+  background-color: #333; /* Dark grey */
   margin: 8% auto;
   padding: 2.5rem 3rem;
-  border: 1px solid #888;
+  border: 1px solid #555; /* Adjusted border color */
   width: 90%;
   max-width: 520px;
   border-radius: 14px;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5); /* Stronger shadow */
   font-family: 'Poppins', sans-serif;
-  color: #222;
+  color: #eee; /* Light grey text for contrast */
   transform: translateY(-20px);
   opacity: 0;
   animation: slideIn 0.4s ease forwards;
@@ -291,7 +296,7 @@ button:hover {
 }
 
 .close-btn {
-  color: #aaa;
+  color: #fff; /* White close button */
   float: right;
   font-size: 30px;
   font-weight: 700;
@@ -302,7 +307,7 @@ button:hover {
 
 .close-btn:hover,
 .close-btn:focus {
-  color: #000;
+  color: #ccc; /* Lighter grey on hover */
   text-decoration: none;
   cursor: pointer;
 }
@@ -324,7 +329,7 @@ button:hover {
   }
 }
 
-/* Responsive adjustments */
+/* Responsive adjustments (from style.css) */
 @media (max-width: 600px) {
   .container {
     width: 90%;
@@ -352,7 +357,7 @@ button:hover {
   }
 }
 
-/* Utility classes for form visibility */
+/* Utility classes for form visibility (from style.css) */
 .hidden {
   display: none !important;
   opacity: 0;
@@ -365,4 +370,249 @@ button:hover {
   opacity: 1;
   pointer-events: auto;
   transition: opacity 0.3s ease;
+}
+
+/* --- From original styleA.css (excluding redundant modal styles) --- */
+
+/* Color Palette variables (if not already defined in style.css, otherwise remove) */
+/* Assuming these are intended as variables for other elements */
+:root {
+  --light-blue: #d1e8ee;
+  --primary-blue: rgb(125, 125, 235);
+  --primary-blue-dark: hsl(227, 90%, 40%);
+  --background-dark: rgba(14, 16, 61, 0.9);
+  --text-dark: #222;
+}
+
+/* Body styles (some overlap with style.css, but keeping for specific styleA.css properties) */
+body {
+  /* background-image, background-repeat, background-size, background-position, height, color are already in style.css */
+  /* Keeping font-family if it's different or intended to override */
+  font-family: 'Georgia', serif; /* This will override Poppins if placed after */
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.full-height {
+  height: 100%;
+}
+
+/* Top links (some overlap, but keeping styleA.css specifics) */
+.top-links {
+  background-color: var(--background-dark); /* Using variable */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3); /* Duplicated, but harmless */
+}
+
+.top-links a {
+  background-color: var(--background-dark); /* Using variable */
+  padding: 6px 12px; /* Slightly different padding */
+  border-radius: 10px; /* Slightly different border-radius */
+  margin: 0 6px; /* Slightly different margin */
+  transition: 0.3s ease;
+}
+
+.top-links a:hover {
+  background-color: var(--primary-blue-dark); /* Using variable */
+}
+
+/* Container (main content area) */
+.container {
+  background-color: rgba(125, 125, 235, 0.1);
+  backdrop-filter: blur(12px);
+  border-radius: 15px;
+  width: 85%;
+  max-width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 60px 50px;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
+  gap: 40px;
+  box-sizing: border-box;
+}
+
+.left-box,
+.login-box {
+  flex: 1;
+  max-width: 50%;
+}
+
+#websitename {
+  text-decoration: none;
+  color: var(--primary-blue-dark);
+}
+
+@media (max-width: 960px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 30px;
+  }
+
+  .left-box,
+  .login-box {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .login-box {
+    margin-top: 30px;
+  }
+}
+
+.left-box h1 {
+  font-size: 48px;
+  margin: 0;
+  line-height: 1.2;
+  color: var(--primary-blue-dark);
+}
+
+.left-box .tagline {
+  margin-top: 30px;
+  font-size: 18px;
+  color: var(--primary-blue);
+}
+
+.login-box {
+  background-color: rgba(125, 125, 235, 0.3);
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(12px);
+  padding: 32px;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.login-box h2 {
+  font-size: 40px;
+  color: var(--primary-blue-dark);
+  margin-bottom: 20px;
+}
+
+.login-box form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.login-box input {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 32px;
+  background-color: var(--primary-blue);
+  color: white;
+  font-size: 18px;
+  text-align: center;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.login-box input::placeholder {
+  color: var(--light-blue);
+}
+
+.login-box button {
+  width: 100%;
+  padding: 15px;
+  background-color: var(--primary-blue-dark);
+  color: white;
+  border: none;
+  border-radius: 32px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.login-box button:hover {
+  background-color: var(--background-dark);
+}
+
+#login {
+  text-decoration: none;
+}
+
+/* Responsive Layout (from styleA.css - keeping for specific styleA.css media queries) */
+@media (max-width: 960px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 30px;
+  }
+
+  .left-box,
+  .login-box {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .login-box {
+    margin-top: 30px;
+  }
+}
+
+/* New styles for help modal form */
+.modal-content .help-form-group {
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+.modal-content .help-form-group p {
+  color: #eee; /* Light text for labels */
+  margin-bottom: 8px;
+  font-size: 1rem;
+}
+
+.modal-content input[type="text"],
+.modal-content input[type="email"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #555;
+  border-radius: 5px;
+  background-color: #444; /* Slightly lighter dark background for inputs */
+  color: #eee; /* Light text for input */
+  font-size: 1rem;
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+.modal-content input[type="text"]::placeholder,
+.modal-content input[type="email"]::placeholder {
+  color: #bbb; /* Lighter placeholder text */
+}
+
+.modal-content input[type="text"]:focus,
+.modal-content input[type="email"]:focus {
+  outline: none;
+  border-color: #888; /* Lighter border on focus */
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+}
+
+.help-submit-btn {
+  display: block; /* Make it a block element to take full width */
+  width: 100%;
+  padding: 12px 20px;
+  margin-top: 20px;
+  background-color: rgb(125, 125, 235); /* Primary blue color */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  font-weight: 600;
+  box-shadow: 0 4px 10px rgba(125, 125, 235, 0.4);
+}
+
+.help-submit-btn:hover {
+  background-color: hsl(227, 90%, 40%); /* Darker blue on hover */
+  box-shadow: 0 6px 15px rgba(50, 50, 150, 0.6);
 }
