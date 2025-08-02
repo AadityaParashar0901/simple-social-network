@@ -1,0 +1,303 @@
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  background-color: #EDECF2;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 80px 1fr 350px;
+  height: 100vh;
+  transition: filter 0.3s ease-in-out;
+}
+
+.container.blur-it {
+  filter: blur(5px) brightness(0.9); 
+  pointer-events: none;
+}
+
+.sidebar {
+  background-color: rgba(216, 226, 235, 0.8); /* #D8E2EB */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  padding-top: 60px;
+}
+
+.nav-btn {
+  /* Using the dusty blue for buttons instead of black */
+  background-color: #8897AA;
+  color: #EDECF2; /* Lightest color for the icon */
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  position: relative;
+  transition: 0.3s ease;
+}
+
+.nav-btn span {
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.7rem;
+  color: #5A6776; 
+}
+
+.nav-btn:hover {
+  /* Using the light lavender for the hover effect */
+  background-color: #C8C7D7;
+  transform: scale(1.05);
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  padding: 60px;
+  overflow-y: auto; /* This is important so you can scroll through posts */
+}
+
+.right-panel {
+  position: relative;
+  padding: 40px;
+}
+
+.top-buttons {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  gap: 15px;
+}
+
+.top-btn {
+  background-color: #8897AA; /* Consistent button color */
+  color: #EDECF2; /* Light text */
+  border: none;
+  border-radius: 25px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.top-btn:hover {
+  background-color: #C8C7D7; /* Consistent hover color */
+}
+
+.hidden { display: none !important; }
+
+/* --- Styles for the dynamic posts on the home page --- */
+#posts-container {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.post-box {
+  background-color: rgba(255, 255, 255, 0.7);
+  border: 1px solid #D1E8EE; /* Light sky blue border */
+  border-radius: 30px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Softer shadow */
+  color: #5A6776; 
+  overflow: hidden; 
+}
+
+.post-box img, .post-box video {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.post-box .caption {
+  padding: 15px 20px;
+  font-size: 1rem;
+}
+
+.no-posts-message {
+  color: #8897AA; /* Dusty blue for subtle text */
+  font-size: 1.2rem;
+}
+
+/* --- Styles for the new "Create Post" page --- */
+#post-page-content {
+  color: #5A6776; /* Dark text */
+  background-color: rgba(244, 237, 229, 0.95); /* Almost solid #F4EDE5 */
+  padding: 40px;
+  border-radius: 30px;
+  width: 80%;
+  max-width: 800px;
+  text-align: center;
+  position: relative;
+}
+
+#post-page-content h1 { margin-bottom: 20px; }
+
+#post-page-content textarea {
+  width: 100%;
+  height: 100px;
+  border-radius: 10px;
+  border: 1px solid #D8E2EB;
+  background-color: #EDECF2;
+  padding: 15px;
+  font-size: 1rem;
+  margin-bottom: 20px;
+  resize: vertical;
+  color: #5A6776;
+}
+
+/* This is the preview area for the image/video */
+#media-preview-container {
+    width: 100%;
+    max-height: 400px;
+    margin-bottom: 20px;
+    border-radius: 15px;
+    background-color: #D8E2EB;
+    display: none; /* Hidden by default */
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+#media-preview-container img, #media-preview-container video {
+    max-width: 100%;
+    max-height: 400px;
+    border-radius: 15px;
+}
+
+/* This makes the file input look like a nice button */
+.file-input-label {
+    background-color: #8897AA;
+    color: #EDECF2;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.file-input-label:hover {
+    background-color: #C8C7D7;
+}
+
+#file-input {
+    display: none; /* The actual input is hidden */
+}
+
+.close-btn {
+  color: #8897AA;
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  font-size: 35px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* --- Popup Styles --- */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(40, 40, 40, 0.6); /* Darkened overlay for contrast */
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-content {
+  background-color: #F4EDE5; /* Warm cream for popups */
+  padding: 30px 40px;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  position: relative;
+}
+
+.popup-content h2 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: #5A6776; /* Darker heading */
+}
+
+.popup-content p {
+  margin-bottom: 25px;
+  color: #8897AA; /* Softer text color */
+  line-height: 1.6;
+}
+
+.popup-buttons { display: flex; justify-content: center; gap: 15px; }
+
+.popup-btn {
+  padding: 10px 25px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.popup-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.popup-btn.confirm {
+  background-color: #8897AA;
+  color: #F4EDE5;
+}
+
+.popup-btn.cancel {
+  background-color: #D8E2EB;
+  color: #5A6776;
+}
+
+.popup-close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: transparent;
+  border: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: #C8C7D7; 
+  transition: color 0.2s;
+}
+
+.popup-close-btn:hover {
+  color: #8897AA;
+}
+
+.post-author {
+  color: #8897AA;
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+  max-width: 600px;
+  width: 100%;
+}
