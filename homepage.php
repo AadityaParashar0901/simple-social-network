@@ -18,7 +18,6 @@ if (!isset($_SESSION['email'])) {
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <!-- New thing if it help then implement -->
   <div class="container" id="main-container">
     <div class="sidebar">
       <button class="nav-btn" id="profile-btn"><i class="fas fa-user"></i><span>Profile</span></button>
@@ -27,22 +26,18 @@ if (!isset($_SESSION['email'])) {
     </div>
 
     <main class="main-content" id="main-content">
-      <!-- This is where the posts will appear -->
       <div id="home-page-content">
         <div id="posts-container">
           <p class="no-posts-message">No posts yet. Why not create one?</p>
         </div>
       </div>
 
-      <!-- The new and improved "Create Post" page -->
       <div id="post-page-content" class="hidden">
         <span class="close-btn" id="close-post-btn">&times;</span>
         <h1>Create a New Post</h1>
 
-        <!-- This is the container where the selected image/video will be shown -->
         <div id="media-preview-container"></div>
 
-        <!-- This is a styled button that triggers the hidden file input -->
         <label for="file-input" class="file-input-label">Select Image or Video</label>
         <input type="file" id="file-input" accept="image/*,video/*" class="hidden">
 
@@ -81,13 +76,6 @@ if (!isset($_SESSION['email'])) {
         <br>
         <p style="text-align: center; font-style: italic;">"Where your voice becomes a vibe"</p>
       </div>
-    </div>
-  </div>
-
-  <div id="settings-popup" class="popup-overlay hidden">
-    <div class="popup-content"><button class="popup-close-btn" id="settings-close-btn">&times;</button>
-      <h2>Settings</h2>
-      <p>The settings panel is under construction.</p>
     </div>
   </div>
 

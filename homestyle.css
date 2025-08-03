@@ -1,4 +1,41 @@
+/*
+Color Palette:
+--lightest-bg: #EDECF2; (Light body background)
+--sidebar-bg: rgba(216, 226, 235, 0.8); (Sidebar, light button backgrounds)
+--dusty-blue: #8897AA; (Primary button, subtle text)
+--light-lavender: #C8C7D7; (Hover effect, close icon)
+--dark-text: #5A6776; (Headings, main text)
+--warm-cream-popup: #F4EDE5; (Popup backgrounds)
+--post-bg: rgba(255, 255, 255, 0.7); (Home page post background)
+--post-border: #D1E8EE; (Home page post border)
+*/
 
+/* Dark Mode Color Palette (from user's image) */
+:root {
+  /* Default Light Mode Colors */
+  --lightest-bg: #EDECF2;
+  --sidebar-bg: rgba(216, 226, 235, 0.8);
+  --dusty-blue: #8897AA;
+  --light-lavender: #C8C7D7;
+  --dark-text: #5A6776;
+  --warm-cream-popup: #F4EDE5;
+  --post-bg: rgba(255, 255, 255, 0.7);
+  --post-border: #D1E8EE;
+  --input-bg: #EDECF2; /* For inputs like textarea in create post */
+}
+
+html.dark-mode {
+  /* Dark Mode Overrides */
+  --lightest-bg: #2e2e2e; /* Very Dark Grey */
+  --sidebar-bg: #424242; /* Dark Grey */
+  --dusty-blue: #616161; /* Medium Grey */
+  --light-lavender: #bdbdbd; /* Light Grey */
+  --dark-text: #eeeeee; /* Very Light Grey */
+  --warm-cream-popup: #424242; /* Dark Grey for popups */
+  --post-bg: #424242; /* Dark Grey for posts */
+  --post-border: #616161; /* Medium Grey border */
+  --input-bg: #616161; /* Dark mode input background */
+}
 
 * {
   margin: 0;
@@ -13,7 +50,9 @@ html, body {
 }
 
 body {
-  background-color: #EDECF2;
+  background-color: var(--lightest-bg);
+  color: var(--dark-text); /* Apply dark-text to body for default text */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for theme change */
 }
 
 .container {
@@ -24,23 +63,23 @@ body {
 }
 
 .container.blur-it {
-  filter: blur(5px) brightness(0.9); 
+  filter: blur(5px) brightness(0.9);
   pointer-events: none;
 }
 
 .sidebar {
-  background-color: rgba(216, 226, 235, 0.8); /* #D8E2EB */
+  background-color: var(--sidebar-bg);
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 40px;
   padding-top: 60px;
+  transition: background-color 0.3s ease;
 }
 
 .nav-btn {
-  /* Using the dusty blue for buttons instead of black */
-  background-color: #8897AA;
-  color: #EDECF2; /* Lightest color for the icon */
+  background-color: var(--dusty-blue);
+  color: var(--lightest-bg);
   border: none;
   border-radius: 50%;
   width: 60px;
@@ -57,12 +96,12 @@ body {
   left: 50%;
   transform: translateX(-50%);
   font-size: 0.7rem;
-  color: #5A6776; 
+  color: var(--dark-text);
+  transition: color 0.3s ease;
 }
 
 .nav-btn:hover {
-  /* Using the light lavender for the hover effect */
-  background-color: #C8C7D7;
+  background-color: var(--light-lavender);
   transform: scale(1.05);
 }
 
@@ -72,7 +111,7 @@ body {
   align-items: center;
   gap: 40px;
   padding: 60px;
-  overflow-y: auto; /* This is important so you can scroll through posts */
+  overflow-y: auto;
 }
 
 .right-panel {
@@ -89,8 +128,8 @@ body {
 }
 
 .top-btn {
-  background-color: #8897AA; /* Consistent button color */
-  color: #EDECF2; /* Light text */
+  background-color: var(--dusty-blue);
+  color: var(--lightest-bg);
   border: none;
   border-radius: 25px;
   padding: 10px 20px;
@@ -100,7 +139,7 @@ body {
 }
 
 .top-btn:hover {
-  background-color: #C8C7D7; /* Consistent hover color */
+  background-color: var(--light-lavender);
 }
 
 .hidden { display: none !important; }
@@ -115,12 +154,13 @@ body {
 }
 
 .post-box {
-  background-color: rgba(255, 255, 255, 0.7);
-  border: 1px solid #D1E8EE; /* Light sky blue border */
+  background-color: var(--post-bg);
+  border: 1px solid var(--post-border);
   border-radius: 30px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Softer shadow */
-  color: #5A6776; 
-  overflow: hidden; 
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  color: var(--dark-text);
+  overflow: hidden;
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }
 
 .post-box img, .post-box video {
@@ -135,20 +175,21 @@ body {
 }
 
 .no-posts-message {
-  color: #8897AA; /* Dusty blue for subtle text */
+  color: var(--dusty-blue);
   font-size: 1.2rem;
 }
 
 /* --- Styles for the new "Create Post" page --- */
 #post-page-content {
-  color: #5A6776; /* Dark text */
-  background-color: rgba(244, 237, 229, 0.95); /* Almost solid #F4EDE5 */
+  color: var(--dark-text);
+  background-color: var(--warm-cream-popup);
   padding: 40px;
   border-radius: 30px;
   width: 80%;
   max-width: 800px;
   text-align: center;
   position: relative;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 #post-page-content h1 { margin-bottom: 20px; }
@@ -157,13 +198,14 @@ body {
   width: 100%;
   height: 100px;
   border-radius: 10px;
-  border: 1px solid #D8E2EB;
-  background-color: #EDECF2;
+  border: 1px solid var(--sidebar-bg);
+  background-color: var(--input-bg); /* Use new input background variable */
   padding: 15px;
   font-size: 1rem;
   margin-bottom: 20px;
   resize: vertical;
-  color: #5A6776;
+  color: var(--dark-text);
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 /* This is the preview area for the image/video */
@@ -172,11 +214,12 @@ body {
     max-height: 400px;
     margin-bottom: 20px;
     border-radius: 15px;
-    background-color: #D8E2EB;
-    display: none; /* Hidden by default */
+    background-color: var(--sidebar-bg); /* Use sidebar bg for preview container */
+    display: none;
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    transition: background-color 0.3s ease;
 }
 
 #media-preview-container img, #media-preview-container video {
@@ -187,31 +230,33 @@ body {
 
 /* This makes the file input look like a nice button */
 .file-input-label {
-    background-color: #8897AA;
-    color: #EDECF2;
+    background-color: var(--dusty-blue);
+    color: var(--lightest-bg);
     padding: 10px 20px;
     border-radius: 25px;
     cursor: pointer;
     display: inline-block;
     margin-bottom: 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .file-input-label:hover {
-    background-color: #C8C7D7;
+    background-color: var(--light-lavender);
 }
 
 #file-input {
-    display: none; /* The actual input is hidden */
+    display: none;
 }
 
 .close-btn {
-  color: #8897AA;
+  color: var(--dusty-blue);
   position: absolute;
   top: 15px;
   right: 25px;
   font-size: 35px;
   font-weight: bold;
   cursor: pointer;
+  transition: color 0.3s ease;
 }
 
 /* --- Popup Styles --- */
@@ -221,7 +266,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(40, 40, 40, 0.6); /* Darkened overlay for contrast */
+  background-color: rgba(40, 40, 40, 0.6);
   z-index: 1000;
   display: flex;
   justify-content: center;
@@ -229,7 +274,7 @@ body {
 }
 
 .popup-content {
-  background-color: #F4EDE5; /* Warm cream for popups */
+  background-color: var(--warm-cream-popup);
   padding: 30px 40px;
   border-radius: 15px;
   width: 90%;
@@ -237,18 +282,21 @@ body {
   text-align: center;
   box-shadow: 0 5px 15px rgba(0,0,0,0.2);
   position: relative;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .popup-content h2 {
   margin-top: 0;
   margin-bottom: 15px;
-  color: #5A6776; /* Darker heading */
+  color: var(--dark-text);
+  transition: color 0.3s ease;
 }
 
 .popup-content p {
   margin-bottom: 25px;
-  color: #8897AA; /* Softer text color */
+  color: var(--dusty-blue);
   line-height: 1.6;
+  transition: color 0.3s ease;
 }
 
 .popup-buttons { display: flex; justify-content: center; gap: 15px; }
@@ -259,7 +307,7 @@ body {
   border-radius: 20px;
   cursor: pointer;
   font-weight: bold;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: transform 0.2s, box-shadow 0.2s, background-color 0.3s ease, color 0.3s ease;
 }
 
 .popup-btn:hover {
@@ -268,13 +316,13 @@ body {
 }
 
 .popup-btn.confirm {
-  background-color: #8897AA;
-  color: #F4EDE5;
+  background-color: var(--dusty-blue);
+  color: var(--warm-cream-popup);
 }
 
 .popup-btn.cancel {
-  background-color: #D8E2EB;
-  color: #5A6776;
+  background-color: var(--sidebar-bg);
+  color: var(--dark-text);
 }
 
 .popup-close-btn {
@@ -285,16 +333,16 @@ body {
   border: none;
   font-size: 1.8rem;
   cursor: pointer;
-  color: #C8C7D7; 
+  color: var(--light-lavender);
   transition: color 0.2s;
 }
 
 .popup-close-btn:hover {
-  color: #8897AA;
+  color: var(--dusty-blue);
 }
 
 .post-author {
-  color: #8897AA;
+  color: var(--dusty-blue);
   font-weight: bold;
   font-size: 1.1rem;
   margin-bottom: 8px;

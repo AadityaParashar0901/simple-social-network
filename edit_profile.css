@@ -1,5 +1,6 @@
 /* Color Palette from homestyle.css for consistency */
 :root {
+  /* Default Light Mode Colors */
   --lightest-bg: #EDECF2;
   --sidebar-bg: rgba(216, 226, 235, 0.8); /* #D8E2EB */
   --dusty-blue: #8897AA;
@@ -8,27 +9,39 @@
   --warm-cream-popup: #F4EDE5;
 }
 
+html.dark-mode {
+  /* Dark Mode Overrides */
+  --lightest-bg: #2e2e2e; /* Very Dark Grey */
+  --sidebar-bg: #424242; /* Dark Grey */
+  --dusty-blue: #616161; /* Medium Grey */
+  --light-lavender: #bdbdbd; /* Light Grey */
+  --dark-text: #eeeeee; /* Very Light Grey */
+  --warm-cream-popup: #424242; /* Dark Grey for popups */
+}
+
 body {
     margin: 0;
-    font-family: 'Segoe UI', sans-serif; /* Consistent with homestyle.css */
-    background-color: var(--lightest-bg); /* Lightest background */
-    color: var(--dark-text); /* Dark text */
+    font-family: 'Segoe UI', sans-serif;
+    background-color: var(--lightest-bg);
+    color: var(--dark-text);
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 20px;
     box-sizing: border-box;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .edit-profile-container {
-    background-color: var(--warm-cream-popup); /* Warm cream background */
+    background-color: var(--warm-cream-popup);
     border-radius: 20px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
     padding: 40px;
     width: 100%;
     max-width: 600px;
     text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .edit-profile-header {
@@ -41,9 +54,10 @@ body {
 .edit-profile-header h2 {
     font-size: 2rem;
     color: var(--dark-text);
-    flex-grow: 1; /* Allow heading to take available space */
+    flex-grow: 1;
     text-align: center;
-    margin-left: -50px; /* Counteract back button space */
+    margin-left: -50px;
+    transition: color 0.3s ease;
 }
 
 .back-btn {
@@ -78,6 +92,7 @@ body {
     margin-bottom: 8px;
     font-weight: bold;
     color: var(--dark-text);
+    transition: color 0.3s ease;
 }
 
 .form-group input[type="text"],
@@ -86,13 +101,13 @@ body {
 .form-group select {
     width: 100%;
     padding: 12px;
-    border: 1px solid var(--sidebar-bg); /* Light border */
+    border: 1px solid var(--sidebar-bg);
     border-radius: 8px;
     font-size: 1rem;
-    background-color: var(--lightest-bg); /* Light background for inputs */
+    background-color: var(--lightest-bg);
     color: var(--dark-text);
     box-sizing: border-box;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
 }
 
 .form-group input[type="text"]:focus,
@@ -101,7 +116,7 @@ body {
 .form-group select:focus {
     outline: none;
     border-color: var(--dusty-blue);
-    box-shadow: 0 0 0 3px rgba(136, 151, 170, 0.3); /* Dusty blue shadow */
+    box-shadow: 0 0 0 3px rgba(136, 151, 170, 0.3);
 }
 
 .form-group textarea {
@@ -114,6 +129,7 @@ body {
     margin-top: 5px;
     font-size: 0.85rem;
     color: var(--dusty-blue);
+    transition: color 0.3s ease;
 }
 
 /* Profile Picture Upload Specific Styles */
@@ -129,7 +145,7 @@ body {
     width: 150px;
     height: 150px;
     border-radius: 50%;
-    background-color: var(--dusty-blue); /* Placeholder color */
+    background-color: var(--dusty-blue);
     background-size: cover;
     background-position: center;
     border: 4px solid var(--light-lavender);
@@ -137,7 +153,7 @@ body {
 }
 
 input[type="file"] {
-    display: none; /* Hide the default file input */
+    display: none;
 }
 
 .upload-btn {
@@ -147,7 +163,7 @@ input[type="file"] {
     border-radius: 25px;
     cursor: pointer;
     font-weight: bold;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease, color 0.3s ease;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
@@ -158,8 +174,8 @@ input[type="file"] {
 }
 
 .save-changes-btn {
-    background-color: var(--dark-text); /* Dark text color for save button */
-    color: var(--warm-cream-popup); /* Light text */
+    background-color: var(--dark-text);
+    color: var(--warm-cream-popup);
     padding: 15px 30px;
     border: none;
     border-radius: 25px;
@@ -167,12 +183,12 @@ input[type="file"] {
     font-weight: bold;
     cursor: pointer;
     margin-top: 20px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease, color 0.3s ease;
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
 }
 
 .save-changes-btn:hover {
-    background-color: #4A5766; /* Slightly lighter dark text on hover */
+    background-color: #4A5766;
     transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }

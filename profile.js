@@ -2,21 +2,22 @@ document.addEventListener('DOMContentLoaded', function() {
     const profileContainer = document.getElementById('profile-container');
     const profilePic = document.getElementById('profile-pic');
     const profileUsername = document.getElementById('profile-username');
-    const postCount = document.getElementById('post-count');
     const profileFullname = document.getElementById('profile-fullname');
     const profileBio = document.getElementById('profile-bio');
 
     const profileHomeBtn = document.getElementById('profile-home-btn');
     const profileSettingsBtn = document.getElementById('profile-settings-btn');
+    const profileActivityBtn = document.getElementById('profile-activity-btn'); // New: Your Activity Button
     const editProfileBtn = document.getElementById('edit-profile-btn');
 
     const settingsPopup = document.getElementById('settings-popup');
     const settingsCloseBtn = document.getElementById('settings-close-btn');
-    const settingsWebsiteLink = document.getElementById('settings-website-link');
+    // Removed settingsWebsiteLink reference
     const settingsQrcodeBtn = document.getElementById('settings-qrcode-btn');
     const settingsPrivacyBtn = document.getElementById('settings-privacy-btn');
     const settingsLogoutBtn = document.getElementById('settings-logout-btn');
     const settingsCancelBtn = document.getElementById('settings-cancel-btn');
+    const darkModeToggle = document.getElementById('darkModeToggle');
 
     const underConstructionModal = document.getElementById('underConstructionModal');
     const underConstructionOkBtn = document.getElementById('under-construction-ok-btn');
@@ -35,12 +36,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // --- Dynamic Profile Data (Placeholder) ---
-    // In a real application, you would fetch this data from a server.
-    // For demonstration, we'll use dummy data and simulate updates.
     let userData = {
         username: 'JohnDoe',
-        profilePicUrl: 'https://placehold.co/180x180/8897AA/FFFFFF?text=JD', // Example placeholder image
-        postCount: 15,
+        profilePicUrl: 'https://placehold.co/180x180/8897AA/FFFFFF?text=JD',
         fullName: 'Johnathan Doe',
         bio: 'Passionate about web development and open source projects.'
     };
@@ -48,7 +46,6 @@ document.addEventListener('DOMContentLoaded', function() {
     function updateProfileUI() {
         profileUsername.textContent = userData.username;
         profilePic.style.backgroundImage = `url('${userData.profilePicUrl}')`;
-        postCount.textContent = userData.postCount;
         profileFullname.textContent = userData.fullName;
         profileBio.textContent = userData.bio;
     }
@@ -56,14 +53,35 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initial UI update
     updateProfileUI();
 
+    // --- Dark Mode Initialization and Toggle ---
+    if (localStorage.getItem('darkMode') === 'enabled') {
+        document.documentElement.classList.add('dark-mode');
+        darkModeToggle.checked = true;
+    } else {
+        document.documentElement.classList.remove('dark-mode');
+        darkModeToggle.checked = false;
+    }
+
+    if (darkModeToggle) {
+        darkModeToggle.addEventListener('change', function() {
+            if (this.checked) {
+                document.documentElement.classList.add('dark-mode');
+                localStorage.setItem('darkMode', 'enabled');
+            } else {
+                document.documentElement.classList.remove('dark-mode');
+                localStorage.setItem('darkMode', 'disabled');
+            }
+        });
+    }
+
     // --- Home Button Functionality with Animation ---
     if (profileHomeBtn) {
         profileHomeBtn.addEventListener('click', function(event) {
-            event.preventDefault(); // Prevent default link behavior
-            toggleBlur(true); // Apply blur
+            event.preventDefault();
+            toggleBlur(true);
             setTimeout(() => {
-                window.location.href = 'homepage.php'; // Redirect after a short delay
-            }, 300); // Match CSS transition duration
+                window.location.href = 'homepage.php';
+            }, 300);
         });
     }
 
@@ -71,60 +89,66 @@ document.addEventListener('DOMContentLoaded', function() {
     if (profileSettingsBtn) {
         profileSettingsBtn.addEventListener('click', function() {
             settingsPopup.classList.remove('hidden');
-            toggleBlur(true); // Apply blur when settings popup opens
+            toggleBlur(true);
         });
     }
 
     if (settingsCloseBtn) {
         settingsCloseBtn.addEventListener('click', function() {
             settingsPopup.classList.add('hidden');
-            toggleBlur(false); // Remove blur when settings popup closes
+            toggleBlur(false);
+        });
+    }
+
+    // --- Your Activity Button Functionality ---
+    if (profileActivityBtn) {
+        profileActivityBtn.addEventListener('click', function() {
+            underConstructionModal.classList.remove('hidden'); // Show under construction modal
+            toggleBlur(true); // Apply blur
         });
     }
 
     // Handle clicks on settings list items
     if (settingsQrcodeBtn) {
         settingsQrcodeBtn.addEventListener('click', function() {
-            settingsPopup.classList.add('hidden'); // Hide settings popup
-            underConstructionModal.classList.remove('hidden'); // Show under construction
+            settingsPopup.classList.add('hidden');
+            underConstructionModal.classList.remove('hidden');
         });
     }
 
     if (settingsPrivacyBtn) {
         settingsPrivacyBtn.addEventListener('click', function() {
-            settingsPopup.classList.add('hidden'); // Hide settings popup
-            underConstructionModal.classList.remove('hidden'); // Show under construction
+            settingsPopup.classList.add('hidden');
+            underConstructionModal.classList.remove('hidden');
         });
     }
 
     if (settingsLogoutBtn) {
         settingsLogoutBtn.addEventListener('click', function() {
-            settingsPopup.classList.add('hidden'); // Hide settings popup
-            logoutConfirmPopup.classList.remove('hidden'); // Show logout confirmation
+            settingsPopup.classList.add('hidden');
+            logoutConfirmPopup.classList.remove('hidden');
         });
     }
 
     if (settingsCancelBtn) {
-        settingsCancelBtn.addEventListener('click', function() {
-            settingsPopup.classList.add('hidden');
-            toggleBlur(false); // Remove blur
-        });
+        settingsPopup.classList.add('hidden');
+        toggleBlur(false);
     }
 
     // --- Under Construction Modal Functionality ---
     if (underConstructionOkBtn) {
         underConstructionOkBtn.addEventListener('click', function() {
             underConstructionModal.classList.add('hidden');
-            toggleBlur(false); // Remove blur
+            toggleBlur(false);
         });
     }
 
-    // --- Logout Confirmation Functionality (from homepage.php, adapted for profile) ---
+    // --- Logout Confirmation Functionality ---
     if (confirmLogoutBtn) {
         confirmLogoutBtn.addEventListener('click', function() {
-            toggleBlur(true); // Apply blur for logout
+            toggleBlur(true);
             setTimeout(() => {
-                window.location.href = 'logout.php'; // Redirect to logout script
+                window.location.href = 'logout.php';
             }, 300);
         });
     }
@@ -132,16 +156,16 @@ document.addEventListener('DOMContentLoaded', function() {
     if (cancelLogoutBtn) {
         cancelLogoutBtn.addEventListener('click', function() {
             logoutConfirmPopup.classList.add('hidden');
-            toggleBlur(false); // Remove blur
+            toggleBlur(false);
         });
     }
 
     // --- Edit Profile Button Redirection ---
     if (editProfileBtn) {
         editProfileBtn.addEventListener('click', function() {
-            toggleBlur(true); // Apply blur before redirect
+            toggleBlur(true);
             setTimeout(() => {
-                window.location.href = 'edit_profile.php'; // Redirect to edit profile page
+                window.location.href = 'edit_profile.php';
             }, 300);
         });
     }
@@ -161,9 +185,4 @@ document.addEventListener('DOMContentLoaded', function() {
             toggleBlur(false);
         }
     });
-
-    // --- Placeholder for dynamic post count update ---
-    // In a real scenario, this would involve fetching actual post data
-    // and updating the count. For now, it's just a UI placeholder.
-    // To manually test, you can change userData.postCount and call updateProfileUI()
 });

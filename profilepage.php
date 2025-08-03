@@ -12,6 +12,7 @@
   <div class="sidebar">
     <div class="icon" id="profile-home-btn"><i class="fas fa-home"></i></div>
     <div class="icon" id="profile-settings-btn"><i class="fa-solid fa-gear"></i></div>
+    <div class="icon" id="profile-activity-btn"><i class="fas fa-chart-line"></i></div> <!-- New: Your Activity Button -->
   </div>
   
   <div class="profile-container" id="profile-container">
@@ -20,7 +21,6 @@
       <div class="profile-info">
         <h1 class="username" id="profile-username">Loading...</h1>
         <div class="stats">
-          <div><strong id="post-count">0</strong><br>posts</div>
           <div><strong>0</strong><br>followers</div>
           <div><strong>0</strong><br>following</div>
         </div>
@@ -48,7 +48,14 @@
       <button class="popup-close-btn" id="settings-close-btn">&times;</button>
       <h2>Settings</h2>
       <ul>
-        <li><a href="homepage.php" id="settings-website-link">Website</a></li>
+        <!-- Dark Mode toggle moved to the top -->
+        <li class="settings-toggle-item">
+          <span>Dark Mode</span>
+          <label class="switch">
+            <input type="checkbox" id="darkModeToggle">
+            <span class="slider round"></span>
+          </label>
+        </li>
         <li id="settings-qrcode-btn">QR Code</li>
         <li id="settings-privacy-btn">Privacy</li>
         <li id="settings-logout-btn">Log Out</li>
@@ -66,7 +73,7 @@
     </div>
   </div>
 
-  <!-- Logout Confirmation Popup (Existing) -->
+  <!-- Logout Confirmation Popup -->
   <div class="popup-overlay hidden" id="logout-confirm-popup">
     <div class="logout-confirm-content">
       <h2>Log Out</h2>

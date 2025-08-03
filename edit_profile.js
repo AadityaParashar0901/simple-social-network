@@ -8,12 +8,18 @@ document.addEventListener('DOMContentLoaded', function() {
     const genderSelect = document.getElementById('gender');
     const emailInput = document.getElementById('email');
 
+    // --- Dark Mode Initialization ---
+    // Check localStorage for dark mode preference and apply it on load
+    if (localStorage.getItem('darkMode') === 'enabled') {
+        document.documentElement.classList.add('dark-mode');
+    } else {
+        document.documentElement.classList.remove('dark-mode');
+    }
+
     // --- Load existing data (placeholder) ---
-    // In a real application, this data would be fetched from the server
-    // when the page loads.
     let currentProfileData = {
         userId: 'JohnDoe',
-        profilePicUrl: 'https://placehold.co/150x150/8897AA/FFFFFF?text=JD',
+        profilePicUrl: 'https://placehold.co/150x150/8897AA/FFFFFF?text=JD', // Example placeholder image
         fullName: 'Johnathan Doe',
         bio: 'Passionate about web development and open source projects.',
         gender: 'male', // Default or fetched value
@@ -38,7 +44,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const reader = new FileReader();
             reader.onload = function(e) {
                 profilePicPreview.style.backgroundImage = `url('${e.target.result}')`;
-                // Optionally, update currentProfileData with the new URL
                 currentProfileData.profilePicUrl = e.target.result;
             };
             reader.readAsDataURL(file);
@@ -54,14 +59,9 @@ document.addEventListener('DOMContentLoaded', function() {
         currentProfileData.fullName = fullNameInput.value;
         currentProfileData.bio = bioTextarea.value;
         currentProfileData.gender = genderSelect.value;
-        // Email is readonly, so it's not changed here.
 
-        // In a real application, you would send currentProfileData to your server
-        // using Fetch API or XMLHttpRequest.
         console.log("Saving profile data:", currentProfileData);
 
-        // Simulate a successful save and redirect back to profile page
-        // In a real app, you'd wait for server response before redirecting
         alert("Profile updated successfully!"); // Using alert for simplicity, consider custom modal
         window.location.href = 'profilepage.php';
     });

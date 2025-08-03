@@ -1,21 +1,35 @@
 /* Color Palette from homestyle.css for consistency */
 :root {
+  /* Default Light Mode Colors */
   --lightest-bg: #EDECF2;
   --sidebar-bg: rgba(216, 226, 235, 0.8); /* #D8E2EB */
   --dusty-blue: #8897AA;
   --light-lavender: #C8C7D7;
   --dark-text: #5A6776;
   --warm-cream-popup: #F4EDE5;
+  --post-bg: #333; /* Dark background for posts */
+}
+
+html.dark-mode {
+  /* Dark Mode Overrides */
+  --lightest-bg: #2e2e2e; /* Very Dark Grey */
+  --sidebar-bg: #424242; /* Dark Grey */
+  --dusty-blue: #616161; /* Medium Grey */
+  --light-lavender: #bdbdbd; /* Light Grey */
+  --dark-text: #eeeeee; /* Very Light Grey */
+  --warm-cream-popup: #424242; /* Dark Grey for popups */
+  --post-bg: #424242; /* Dark Grey for posts */
 }
 
 body {
   margin: 0;
   font-family: 'Playfair Display', serif;
   background: url('images/bg6.jpg') no-repeat center center/cover;
-  color: white;
+  color: var(--dark-text); /* Apply dark-text to body for default text */
   min-height: 100vh;
   overflow-x: hidden;
   overflow-y: auto;
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
 }
 
 /* Sidebar */
@@ -30,23 +44,23 @@ body {
 }
 
 .icon {
-  background-color: var(--sidebar-bg); /* Matching sidebar bg from homestyle */
-  color: var(--dark-text); /* Dark text for icons */
+  background-color: var(--sidebar-bg);
+  color: var(--dark-text);
   padding: 18px;
   border-radius: 50%;
-  width: 60px;
-  height: 60px;
+  width: 30px; /* Adjusted size */
+  height: 30px; /* Adjusted size */
   text-align: center;
-  font-size: 22px;
+  font-size: 20px; /* Adjusted size */
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease, color 0.3s ease;
 }
 
 .icon:hover {
-  background-color: var(--light-lavender); /* Light lavender on hover */
+  background-color: var(--light-lavender);
   transform: scale(1.05);
 }
 
@@ -68,28 +82,30 @@ body {
   display: flex;
   align-items: center;
   gap: 40px;
-  background-color: rgba(255, 255, 255, 0.1); /* Slightly transparent white */
-  backdrop-filter: blur(10px); /* Blur effect for the header */
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
   border-radius: 20px;
   padding: 30px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .profile-pic {
   width: 180px;
   height: 180px;
-  background-color: var(--dusty-blue); /* Dusty blue placeholder */
+  background-color: var(--dusty-blue);
   border-radius: 50%;
   background-size: cover;
   background-position: center;
-  border: 4px solid var(--light-lavender); /* Light border */
-  flex-shrink: 0; /* Prevent shrinking */
+  border: 4px solid var(--light-lavender);
+  flex-shrink: 0;
 }
 
 .username {
   font-size: 2.2rem;
   margin: 0;
-  color: var(--dark-text); /* Dark text for username */
+  color: var(--dark-text);
+  transition: color 0.3s ease;
 }
 
 .stats {
@@ -97,12 +113,14 @@ body {
   gap: 30px;
   margin: 10px 0;
   font-size: 1rem;
-  color: var(--dusty-blue); /* Dusty blue for stats text */
+  color: var(--dusty-blue);
+  transition: color 0.3s ease;
 }
 
 .stats strong {
-  color: var(--dark-text); /* Dark text for numbers */
+  color: var(--dark-text);
   font-size: 1.2rem;
+  transition: color 0.3s ease;
 }
 
 .stats div {
@@ -112,11 +130,13 @@ body {
 .bio {
   font-size: 1rem;
   margin-top: 10px;
-  color: var(--dark-text); /* Dark text for bio */
+  color: var(--dark-text);
+  transition: color 0.3s ease;
 }
 
 .bio strong {
-  color: var(--dusty-blue); /* Dusty blue for full name */
+  color: var(--dusty-blue);
+  transition: color 0.3s ease;
 }
 
 .buttons {
@@ -126,8 +146,8 @@ body {
 }
 
 .buttons button {
-  background-color: var(--dusty-blue); /* Dusty blue button */
-  color: var(--lightest-bg); /* Lightest color for text */
+  background-color: var(--dusty-blue);
+  color: var(--lightest-bg);
   border: none;
   padding: 12px 25px;
   border-radius: 25px;
@@ -135,19 +155,19 @@ body {
   font-family: 'Playfair Display', serif;
   font-size: 1rem;
   font-weight: bold;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease, color 0.3s ease;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 .buttons button:hover {
-  background-color: var(--light-lavender); /* Light lavender on hover */
+  background-color: var(--light-lavender);
   transform: translateY(-2px);
   box-shadow: 0 6px 12px rgba(0,0,0,0.2);
 }
 
 .center-icon {
-  background-color: var(--sidebar-bg); /* Matching sidebar bg */
-  color: var(--dark-text); /* Dark text for icon */
+  background-color: var(--sidebar-bg);
+  color: var(--dark-text);
   border-radius: 50%;
   width: 60px;
   height: 60px;
@@ -157,6 +177,7 @@ body {
   justify-content: center;
   margin: 30px auto;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .post-grid {
@@ -173,8 +194,9 @@ body {
   position: relative;
   border-radius: 15px;
   overflow: hidden;
-  background-color: #333; /* Dark background for posts */
+  background-color: var(--post-bg); /* Use post-bg variable */
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: background-color 0.3s ease;
 }
 
 .post-grid-item img, .post-grid-item video {
@@ -187,11 +209,12 @@ body {
 }
 
 .no-posts-message {
-  color: var(--dusty-blue); /* Dusty blue for subtle text */
+  color: var(--dusty-blue);
   font-size: 1.2rem;
   text-align: center;
-  grid-column: 1 / -1; /* Span across all columns */
+  grid-column: 1 / -1;
   margin-top: 50px;
+  transition: color 0.3s ease;
 }
 
 /* === STYLES FOR ALL POPUPS === */
@@ -203,7 +226,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(40, 40, 40, 0.6); /* Darkened overlay for contrast */
+  background-color: rgba(40, 40, 40, 0.6);
   z-index: 1000;
   display: flex;
   justify-content: center;
@@ -211,7 +234,7 @@ body {
 }
 
 .popup-content {
-  background-color: var(--warm-cream-popup); /* Warm cream for popups */
+  background-color: var(--warm-cream-popup);
   padding: 30px 40px;
   border-radius: 15px;
   width: 90%;
@@ -219,18 +242,21 @@ body {
   text-align: center;
   box-shadow: 0 5px 15px rgba(0,0,0,0.2);
   position: relative;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .popup-content h2 {
   margin-top: 0;
   margin-bottom: 15px;
-  color: var(--dark-text); /* Darker heading */
+  color: var(--dark-text);
+  transition: color 0.3s ease;
 }
 
 .popup-content p {
   margin-bottom: 25px;
-  color: var(--dusty-blue); /* Softer text color */
+  color: var(--dusty-blue);
   line-height: 1.6;
+  transition: color 0.3s ease;
 }
 
 .popup-buttons {
@@ -245,7 +271,7 @@ body {
   border-radius: 20px;
   cursor: pointer;
   font-weight: bold;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: transform 0.2s, box-shadow 0.2s, background-color 0.3s ease, color 0.3s ease;
 }
 
 .popup-btn:hover {
@@ -254,13 +280,13 @@ body {
 }
 
 .popup-btn.confirm {
-  background-color: var(--dusty-blue); /* Dusty blue for confirm */
-  color: var(--warm-cream-popup); /* Light text */
+  background-color: var(--dusty-blue);
+  color: var(--warm-cream-popup);
 }
 
 .popup-btn.cancel {
-  background-color: var(--sidebar-bg); /* Sidebar bg for cancel */
-  color: var(--dark-text); /* Dark text */
+  background-color: var(--sidebar-bg);
+  color: var(--dark-text);
 }
 
 .popup-close-btn {
@@ -271,27 +297,29 @@ body {
   border: none;
   font-size: 1.8rem;
   cursor: pointer;
-  color: var(--light-lavender); /* Light lavender for close icon */
+  color: var(--light-lavender);
   transition: color 0.2s;
 }
 
 .popup-close-btn:hover {
-  color: var(--dusty-blue); /* Dusty blue on hover */
+  color: var(--dusty-blue);
 }
 
 /* Style for the Main Settings Menu */
 .settings-popup-content {
-  background-color: var(--warm-cream-popup); /* Light background for settings popup */
-  color: var(--dark-text); /* Dark text */
+  background-color: var(--warm-cream-popup);
+  color: var(--dark-text);
   border-radius: 15px;
   width: 90%;
   max-width: 400px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  padding: 20px 0; /* Adjust padding for list items */
+  padding: 20px 0;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 .settings-popup-content h2 {
     margin-bottom: 20px;
-    padding: 0 25px; /* Match list item padding */
+    padding: 0 25px;
+    transition: color 0.3s ease;
 }
 .settings-popup-content ul {
   list-style: none;
@@ -300,29 +328,94 @@ body {
 }
 .settings-popup-content li {
   padding: 15px 25px;
-  border-bottom: 1px solid var(--sidebar-bg); /* Light border */
+  border-bottom: 1px solid var(--sidebar-bg);
   cursor: pointer;
-  transition: background-color 0.2s ease;
-  font-family: 'Segoe UI', sans-serif; /* Using Segoe UI from homestyle */
-  color: var(--dark-text); /* Dark text for list items */
+  transition: background-color 0.2s ease, color 0.3s ease, border-color 0.3s ease;
+  font-family: 'Segoe UI', sans-serif;
+  color: var(--dark-text);
   font-size: 1.1rem;
+  display: flex; /* For toggle switch alignment */
+  justify-content: space-between; /* For toggle switch alignment */
+  align-items: center; /* For toggle switch alignment */
 }
 .settings-popup-content li:hover {
-  background-color: var(--sidebar-bg); /* Sidebar bg on hover */
+  background-color: var(--sidebar-bg);
 }
 .settings-popup-content li:last-child {
   border-bottom: none;
 }
 .settings-popup-content li a {
-  color: var(--dark-text); /* Dark text for links */
+  color: var(--dark-text);
   text-decoration: none;
   display: block;
+  flex-grow: 1; /* Allow link to take available space */
+  transition: color 0.3s ease;
 }
+
+/* Toggle Switch Styles */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 24px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc; /* Light mode off state */
+  transition: .4s;
+  border-radius: 24px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: var(--dusty-blue); /* Dark mode on state */
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px var(--dusty-blue);
+}
+
+input:checked + .slider:before {
+  transform: translateX(16px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 24px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
 
 /* Style for the Under Construction / Coming Soon Popup */
 .under-construction-content {
-  background-color: var(--warm-cream-popup); /* Warm cream for content */
-  color: var(--dark-text); /* Dark text */
+  background-color: var(--warm-cream-popup);
+  color: var(--dark-text);
   padding: 30px 40px;
   border-radius: 16px;
   width: 90%;
@@ -330,14 +423,15 @@ body {
   text-align: center;
   font-family: 'Segoe UI', sans-serif;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
-.under-construction-content h2 { margin: 0 0 10px 0; font-size: 24px; }
-.under-construction-content p { margin: 0 0 25px 0; font-size: 16px; color: var(--dusty-blue); }
+.under-construction-content h2 { margin: 0 0 10px 0; font-size: 24px; transition: color 0.3s ease; }
+.under-construction-content p { margin: 0 0 25px 0; font-size: 16px; color: var(--dusty-blue); transition: color 0.3s ease; }
 
 /* Style for the Special Logout Confirmation Popup (Existing, adjusted colors) */
 .logout-confirm-content {
-  background-color: var(--warm-cream-popup); /* Warm cream for content */
-  color: var(--dark-text); /* Dark text */
+  background-color: var(--warm-cream-popup);
+  color: var(--dark-text);
   padding: 30px 40px;
   border-radius: 16px;
   width: 90%;
@@ -345,14 +439,15 @@ body {
   text-align: center;
   font-family: 'Segoe UI', sans-serif;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
-.logout-confirm-content h2 { margin: 0 0 10px 0; font-size: 24px; }
-.logout-confirm-content p { margin: 0 0 25px 0; font-size: 16px; color: var(--dusty-blue); }
+.logout-confirm-content h2 { margin: 0 0 10px 0; font-size: 24px; transition: color 0.3s ease; }
+.logout-confirm-content p { margin: 0 0 25px 0; font-size: 16px; color: var(--dusty-blue); transition: color 0.3s ease; }
 .logout-confirm-buttons { display: flex; justify-content: center; gap: 15px; }
-.logout-confirm-buttons button { border: none; padding: 12px 30px; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; transition: transform 0.2s ease; }
+.logout-confirm-buttons button { border: none; padding: 12px 30px; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; transition: transform 0.2s ease, background-color 0.3s ease, color 0.3s ease; }
 .logout-confirm-buttons button:hover { transform: scale(1.05); }
-.logout-btn-confirm { background-color: #e74c3c; color: white; } /* Keeping red for logout confirm */
-.logout-btn-cancel { background-color: var(--sidebar-bg); color: var(--dark-text); } /* Matching cancel button */
+.logout-btn-confirm { background-color: #e74c3c; color: white; }
+.logout-btn-cancel { background-color: var(--sidebar-bg); color: var(--dark-text); }
 
 /* Media Queries for responsiveness */
 @media (max-width: 768px) {
@@ -412,7 +507,7 @@ body {
   }
 
   .post-grid {
-    grid-template-columns: 1fr; /* Single column on small screens */
+    grid-template-columns: 1fr;
     width: 100%;
     padding: 0 10px;
   }

@@ -2,8 +2,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const signUpButton = document.getElementById('signUpButton');
   const signInButton = document.getElementById('signInButton');
-  const signInForm = document.getElementById('signIn');
-  const signUpForm = document.getElementById('signup');
+  const signInForm = document.getElementById('signIn'); // Still targets by ID
+  const signUpForm = document.getElementById('signup'); // Still targets by ID
 
   signUpButton.addEventListener('click', function () {
     signInForm.classList.remove('visible');
@@ -23,9 +23,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const helpBtn = document.getElementById("helpBtn");
   const helpModal = document.getElementById("helpModal");
   const closeHelp = document.getElementById("closeHelp");
-  const submitQueryButton = document.getElementById("submitQueryButton"); // New: Get the submit button in help modal
-  const submissionSuccessModal = document.getElementById("submissionSuccessModal"); // New: Get the success modal
-  const okButton = document.getElementById("okButton"); // New: Get the OK button in success modal
+  const submitQueryButton = document.getElementById("submitQueryButton");
+  const submissionSuccessModal = document.getElementById("submissionSuccessModal");
+  const okButton = document.getElementById("okButton");
 
   helpBtn.addEventListener("click", function () {
     helpModal.style.display = "block";
@@ -41,24 +41,15 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // New: Event listener for the submit button in the help modal
   submitQueryButton.addEventListener("click", function () {
-    // In a real application, you would send the query and email to a server here.
-    // For now, we'll just simulate success.
-
-    // Hide the help modal
     helpModal.style.display = "none";
-
-    // Show the submission success modal
     submissionSuccessModal.style.display = "block";
   });
 
-  // New: Event listener for the OK button in the submission success modal
   okButton.addEventListener("click", function () {
     submissionSuccessModal.style.display = "none";
   });
 
-  // New: Close success modal if clicked outside
   window.addEventListener("click", function (event) {
     if (event.target === submissionSuccessModal) {
       submissionSuccessModal.style.display = "none";
@@ -67,26 +58,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   /* contact Us button */
-  // Get the modal element
-  const contactModal = document.getElementById("contactModal"); // Renamed 'modal' to 'contactModal' for clarity
-
-  // Get the button that opens the modal
+  const contactModal = document.getElementById("contactModal");
   const btn = document.getElementById("contactBtn");
-
-  // Get the <span> element that closes the modal
   const span = document.getElementById("contactclose-btn");
 
-  // When the user clicks the button, open the modal
   btn.onclick = function () {
     contactModal.style.display = "block";
   };
 
-  // When the user clicks on <span> (x), close the modal
   span.onclick = function () {
     contactModal.style.display = "none";
   };
 
-  // When the user clicks anywhere outside of the modal, close it
   window.onclick = function (event) {
     if (event.target == contactModal) {
       contactModal.style.display = "none";

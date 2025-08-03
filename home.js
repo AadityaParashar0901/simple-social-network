@@ -10,7 +10,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const logoutConfirmBtn = document.getElementById('logout-confirm-btn');
     const logoutCancelBtn = document.getElementById('logout-cancel-btn');
     const aboutCloseBtn = document.getElementById('about-close-btn');
-    const settingsCloseBtn = document.getElementById('settings-close-btn');
     const closePostBtn = document.getElementById('close-post-btn');
     
     // Get other elements
@@ -18,49 +17,18 @@ document.addEventListener('DOMContentLoaded', function() {
     const postPageContent = document.getElementById('post-page-content');
     const logoutPopup = document.getElementById('logout-popup');
     const aboutPopup = document.getElementById('about-popup');
-    const settingsPopup = document.getElementById('settings-popup');
     const fileInput = document.getElementById('file-input');
     const mediaPreviewContainer = document.getElementById('media-preview-container');
     const captionInput = document.getElementById('caption-input');
     const mainContainer = document.getElementById('main-container');
-    
-    // Create settings popup element if it doesn't exist
-    if (!settingsPopup) {
-        const settingsPopupElement = document.createElement('div');
-        settingsPopupElement.id = 'settings-popup';
-        settingsPopupElement.className = 'popup-overlay hidden';
-        settingsPopupElement.innerHTML = `
-            <div class="popup-content">
-                <button class="popup-close-btn" id="settings-close-btn">&times;</button>
-                <h2>Settings</h2>
-                <p>The settings panel is under construction.</p>
-                <div class="popup-buttons">
-                    <button class="popup-btn cancel" id="settings-cancel-btn">Cancel</button>
-                </div>
-            </div>
-        `;
-        document.body.appendChild(settingsPopupElement);
-        
-        // Add event listener for the new cancel button
-        document.getElementById('settings-cancel-btn').addEventListener('click', function() {
-            settingsPopupElement.classList.add('hidden');
-        });
-        
-        // Update the settingsCloseBtn reference
-        settingsCloseBtn = document.getElementById('settings-close-btn');
+
+    // --- Dark Mode Initialization ---
+    // Check localStorage for dark mode preference and apply it on load
+    if (localStorage.getItem('darkMode') === 'enabled') {
+        document.documentElement.classList.add('dark-mode');
+    } else {
+        document.documentElement.classList.remove('dark-mode');
     }
-    
-    // Add Settings button to the sidebar
-    const settingsBtn = document.createElement('button');
-    settingsBtn.className = 'nav-btn';
-    settingsBtn.id = 'settings-btn';
-    settingsBtn.innerHTML = '<i class="fas fa-cog"></i><span>Settings</span>';
-    document.querySelector('.sidebar').appendChild(settingsBtn);
-    
-    // Add event listener for settings button
-    settingsBtn.addEventListener('click', function() {
-        document.getElementById('settings-popup').classList.remove('hidden');
-    });
     
     // Function to add animation class to container
     function addAnimation(animationClass) {
@@ -113,6 +81,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 mainContainer.classList.remove('blur-it');
                 // Clear the form
                 captionInput.value = '';
+                fileInput.value = '';
                 mediaPreviewContainer.innerHTML = '';
                 mediaPreviewContainer.style.display = 'none';
             }, 300);
@@ -203,13 +172,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Settings close button - hide settings popup
-    if (settingsCloseBtn) {
-        settingsCloseBtn.addEventListener('click', function() {
-            settingsPopup.classList.add('hidden');
-        });
-    }
-    
     // About close button - hide about popup
     if (aboutCloseBtn) {
         aboutCloseBtn.addEventListener('click', function() {
@@ -225,8 +187,6 @@ document.addEventListener('DOMContentLoaded', function() {
         if (e.target === aboutPopup) {
             aboutPopup.classList.add('hidden');
         }
-        if (e.target === settingsPopup) {
-            settingsPopup.classList.add('hidden');
-        }
+        // Removed settingsPopup from here as it's no longer on homepage
     });
 });

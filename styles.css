@@ -1,6 +1,39 @@
 /* Combined Stylesheet */
 
-/* --- From original style.css --- */
+/* Dark Mode Color Palette */
+:root {
+  /* Default Light Mode Colors */
+  --light-blue: #d1e8ee;
+  --primary-blue: rgb(125, 125, 235);
+  --primary-blue-dark: hsl(227, 90%, 40%);
+  --background-dark: rgba(14, 16, 61, 0.9);
+  --text-dark: #222;
+  --main-bg-color: #EDECF2;
+  --form-bg-color: rgba(255, 255, 255, 0.1);
+  --form-border-color: rgba(255, 255, 255, 0.2);
+  --form-shadow-color: rgba(0, 0, 0, 0.15);
+  --intro-heading-color: #0e103d;
+  --intro-tagline-color: rgb(125, 125, 235);
+  --warm-cream-popup: #F4EDE5;
+  --dusty-blue: #a2b2c2;
+}
+
+html.dark-mode {
+  /* Dark Mode Overrides */
+  --light-blue: #616161;
+  --primary-blue: #424242;
+  --primary-blue-dark: #bdbdbd;
+  --background-dark: rgba(0, 0, 0, 0.9);
+  --text-dark: #eeeeee;
+  --main-bg-color: #2e2e2e;
+  --form-bg-color: rgba(66, 66, 66, 0.5);
+  --form-border-color: rgba(97, 97, 97, 0.5);
+  --form-shadow-color: rgba(0, 0, 0, 0.5);
+  --intro-heading-color: #eeeeee;
+  --intro-tagline-color: #bdbdbd;
+  --warm-cream-popup: #424242;
+}
+
 
 /* Reset and base styles */
 * {
@@ -11,15 +44,20 @@
 }
 
 body {
-  background-image: url('Gemini_Generated_Image_6zto0a6zto0a6zto.png');
+  background-image: url('https://storage.googleapis.com/gemini-prod-us-west1-423908-4102/images/6182a461-71b3-4d7a-a621-0a6e355c3c0f.png');
   background-size: cover;
   background-position: center;
   min-height: 100vh;
-  color: #222;
+  color: var(--text-dark);
   font-size: 16px;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  display: grid; /* Use grid to easily center the main container */
+  place-items: center;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  padding-top: 80px;
+  padding-bottom: 20px;
 }
 
 /* Top links */
@@ -29,20 +67,22 @@ body {
   justify-content: flex-end;
   font-size: 18px;
   font-family: 'Georgia', serif;
-  margin-top: 2%;
   padding: 0 30px;
   box-sizing: border-box;
-  background-color: rgba(14, 16, 61, 0.9);
+  background-color: var(--background-dark);
   border-radius: 0 0 12px 12px;
   position: fixed;
   top: 0;
   z-index: 1000;
   box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  transition: background-color 0.3s ease;
+  height: 60px;
+  align-items: center;
 }
 
 .top-links a {
   color: white;
-  background-color: #0e103d;
+  background-color: var(--background-dark);
   padding: 8px 16px;
   border-radius: 12px;
   text-decoration: none;
@@ -53,47 +93,114 @@ body {
 }
 
 .top-links a:hover {
-  background-color: #d1e8ee;
-  color: #0e103d;
+  background-color: var(--light-blue);
+  color: var(--primary-blue-dark);
   box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 }
 
-/* Container for forms */
-.container {
-  background: #fff;
-  padding: 2.5rem 3rem;
-  border-radius: 14px;
-  box-shadow: 0 25px 45px rgba(0, 0, 1, 0.15);
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
-  position: relative;
-  overflow: hidden;
+/* Main Content Area - new wrapper for intro and forms */
+.main-container {
+    display: flex;
+    width: 100%;
+    max-width: 1300px;
+    padding: 0 40px;
+    align-items: stretch; /* Changed to stretch to make columns equal height */
+    justify-content: center;
+    gap: 50px;
+    flex-wrap: wrap;
 }
 
-.container:hover {
-  box-shadow: 0 30px 55px rgba(0, 0, 1, 0.25);
+.left-section {
+    flex: 1.2;
+    display: flex;
+    flex-direction: column;
+    min-width: 350px;
+}
+
+.right-section {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 400px;
+}
+
+
+/* Intro Section (Simple Social Network heading and tagline) */
+.intro-section {
+  text-align: left;
+  padding: 20px 0;
+}
+
+.intro-section h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: var(--intro-heading-color);
+  font-family: 'Playfair Display', serif;
+  line-height: 1.2;
+  margin-bottom: 15px;
+  transition: color 0.3s ease;
+}
+
+.intro-section .tagline {
+  font-size: 1.5rem;
+  color: var(--intro-tagline-color);
+  font-family: 'Georgia', serif;
+  transition: color 0.3s ease;
+}
+
+/* Empty box for spacing and alignment */
+.empty-box {
+    flex-grow: 1; /* Allows the box to fill available space */
+    margin-top: 20px; /* Adds space between tagline and the box */
+    background-color: rgba(128, 128, 128, 0.2); /* Subtle grey background */
+    border-radius: 14px; /* Rounded corners */
+}
+
+
+/* Auth Forms Wrapper (holds sign-in and sign-up forms) */
+.auth-forms-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 450px;
+  height: 580px; /* Set height to accommodate the taller (register) form */
+}
+
+/* Auth Box - new styling for individual sign-in/sign-up forms */
+.auth-box {
+  background-color: var(--form-bg-color);
+  padding: 2rem;
+  border-radius: 14px;
+  box-shadow: 0 15px 30px var(--form-shadow-color);
+  transition: box-shadow 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
+}
+
+.auth-box:hover {
+  box-shadow: 0 20px 40px var(--form-shadow-color);
   transform: translateY(-5px);
 }
 
-/* Form styles */
-form {
-  margin: 0 1rem;
-}
-
+/* Form titles */
 .form-title {
-  font-size: 2.4rem;
+  font-size: 2.2rem;
   font-weight: 700;
   text-align: center;
-  padding: 1.5rem 0 1.2rem 0;
-  margin-bottom: 1.5rem;
-  color: #0e103d;
+  padding: 1rem 0;
+  margin-bottom: 1rem;
+  color: var(--primary-blue-dark);
   font-family: 'Playfair Display', serif;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   user-select: none;
+  transition: color 0.3s ease;
 }
 
 .input-group {
-  padding: 1.2rem 0;
+  padding: 0.8rem 0;
   position: relative;
 }
 
@@ -102,18 +209,18 @@ form {
   top: 50%;
   left: 0.6rem;
   transform: translateY(-50%);
-  color: #0e103d;
+  color: var(--primary-blue-dark);
   font-size: 1.3rem;
   transition: color 0.3s ease;
 }
 
 input {
-  color: #222;
+  color: var(--text-dark);
   width: 100%;
   background-color: transparent;
   border: none;
-  border-bottom: 2.5px solid #ccc;
-  padding-left: 3rem;
+  border-bottom: 2.5px solid var(--light-blue);
+  padding: 10px 0 10px 3rem;
   font-size: 1.1rem;
   transition: border-color 0.3s ease, color 0.3s ease;
   font-weight: 500;
@@ -121,8 +228,8 @@ input {
 
 input:focus {
   outline: none;
-  border-bottom: 2.5px solid hsl(327, 90%, 40%);
-  color: hsl(327, 90%, 20%);
+  border-bottom: 2.5px solid var(--primary-blue-dark);
+  color: var(--text-dark);
 }
 
 input::placeholder {
@@ -130,10 +237,11 @@ input::placeholder {
 }
 
 label {
-  color: #757575;
-  position: relative;
+  color: var(--dusty-blue);
+  position: absolute;
   left: 3rem;
-  top: -1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
   cursor: text;
   transition: 0.3s ease all;
   font-size: 0.95rem;
@@ -143,8 +251,8 @@ label {
 
 input:focus ~ label,
 input:not(:placeholder-shown) ~ label {
-  top: -3.4rem;
-  color: hsl(327, 90%, 40%);
+  top: -0.2rem;
+  color: var(--primary-blue-dark);
   font-size: 0.85rem;
   font-weight: 700;
 }
@@ -153,30 +261,30 @@ input:not(:placeholder-shown) ~ label {
 .recover {
   text-align: right;
   font-size: 1rem;
-  margin-bottom: 1.2rem;
+  margin-bottom: 0.5rem;
 }
 
 .recover a {
   text-decoration: none;
-  color: rgb(125, 125, 235);
+  color: var(--primary-blue);
   transition: color 0.3s ease;
   font-weight: 600;
 }
 
 .recover a:hover {
-  color: hsl(227, 90%, 50%);
+  color: var(--primary-blue-dark);
   text-decoration: underline;
 }
 
 /* Buttons */
 .btn {
-  font-size: 1.15rem;
-  padding: 12px 0;
+  font-size: 1.1rem;
+  padding: 10px 0;
   border-radius: 8px;
   outline: none;
   border: none;
   width: 100%;
-  background: rgb(125, 125, 235);
+  background: var(--primary-blue);
   color: white;
   cursor: pointer;
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
@@ -184,46 +292,48 @@ input:not(:placeholder-shown) ~ label {
   letter-spacing: 0.07em;
   box-shadow: 0 4px 10px rgba(125, 125, 235, 0.6);
   user-select: none;
+  margin-top: 1rem;
 }
 
 .btn:hover {
-  background: hsl(227, 90%, 40%);
+  background: var(--primary-blue-dark);
   box-shadow: 0 6px 18px rgba(50, 50, 150, 0.8);
   transform: translateY(-2px);
 }
 
 /* Or separator */
 .or {
-  font-size: 1.2rem;
-  margin-top: 1.2rem;
+  font-size: 1rem;
+  margin-top: 1rem;
   text-align: center;
-  color: #555;
+  color: var(--dusty-blue);
   font-weight: 700;
   user-select: none;
+  transition: color 0.3s ease;
 }
 
 /* Social icons */
 .icons {
   text-align: center;
-  margin-top: 1.2rem;
+  margin-top: 1rem;
 }
 
 .icons i {
-  color: rgb(125, 125, 235);
-  padding: 0.9rem 1.7rem;
+  color: var(--primary-blue);
+  padding: 0.8rem 1.5rem;
   border-radius: 12px;
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   cursor: pointer;
-  border: 2.5px solid #dfe9f5;
-  margin: 0 18px;
+  border: 2.5px solid var(--light-blue);
+  margin: 0 12px;
   transition: all 0.3s ease;
   user-select: none;
 }
 
 .icons i:hover {
-  background: hsl(227, 90%, 40%);
-  font-size: 1.75rem;
-  border: 2.5px solid rgb(125, 125, 235);
+  background: var(--primary-blue-dark);
+  font-size: 1.6rem;
+  border: 2.5px solid var(--primary-blue);
   box-shadow: 0 6px 15px rgba(50, 50, 150, 0.7);
 }
 
@@ -232,13 +342,17 @@ input:not(:placeholder-shown) ~ label {
   display: flex;
   justify-content: space-around;
   padding: 0 4rem;
-  margin-top: 1.2rem;
+  margin-top: 1rem;
   font-weight: 700;
   user-select: none;
 }
 
-button {
-  color: rgb(125, 125, 235);
+.links p {
+    color: var(--text-dark);
+}
+
+.links button {
+  color: var(--primary-blue);
   border: none;
   background-color: transparent;
   font-size: 1.05rem;
@@ -248,24 +362,23 @@ button {
   user-select: none;
 }
 
-button:hover {
+.links button:hover {
   text-decoration: underline;
-  color: hsl(227, 90%, 50%);
+  color: var(--primary-blue-dark);
 }
 
-/* Modal styles (from style.css - these are the effective styles) */
+/* Modal styles */
 .modal {
   display: none;
   position: fixed;
-  z-index: 2000; /* High z-index to ensure visibility */
+  z-index: 2000;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
   overflow: auto;
-  /* Changed background to transparent */
-  background-color: rgba(0, 0, 0, 0); /* Transparent background */
-  backdrop-filter: blur(8px); /* Increased blur for more effect */
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
   animation: fadeIn 0.4s ease forwards;
 }
 
@@ -275,19 +388,20 @@ button:hover {
 }
 
 .modal-content {
-  background-color: #333; /* Dark grey */
+  background-color: var(--warm-cream-popup);
   margin: 8% auto;
   padding: 2.5rem 3rem;
-  border: 1px solid #555; /* Adjusted border color */
+  border: 1px solid var(--dusty-blue);
   width: 90%;
   max-width: 520px;
   border-radius: 14px;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5); /* Stronger shadow */
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
   font-family: 'Poppins', sans-serif;
-  color: #eee; /* Light grey text for contrast */
+  color: var(--text-dark);
   transform: translateY(-20px);
   opacity: 0;
   animation: slideIn 0.4s ease forwards;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 .modal.show .modal-content {
@@ -296,7 +410,7 @@ button:hover {
 }
 
 .close-btn {
-  color: #fff; /* White close button */
+  color: var(--text-dark);
   float: right;
   font-size: 30px;
   font-weight: 700;
@@ -307,7 +421,7 @@ button:hover {
 
 .close-btn:hover,
 .close-btn:focus {
-  color: #ccc; /* Lighter grey on hover */
+  color: var(--light-blue);
   text-decoration: none;
   cursor: pointer;
 }
@@ -329,235 +443,79 @@ button:hover {
   }
 }
 
-/* Responsive adjustments (from style.css) */
+/* Responsive adjustments */
+@media (max-width: 960px) {
+  .main-container {
+    flex-direction: column;
+    gap: 0;
+    padding: 20px;
+    align-items: center; /* Revert to center for stacked layout */
+  }
+  .intro-section {
+    text-align: center;
+  }
+  .left-section {
+    align-items: center;
+  }
+  .right-section {
+      width: 100%;
+  }
+  .empty-box {
+      display: none; /* Hide the empty box on small screens to save space */
+  }
+}
+
 @media (max-width: 600px) {
-  .container {
-    width: 90%;
-    margin: 120px auto 40px auto;
+  body {
+    padding-top: 70px;
+  }
+  .top-links {
+    height: 50px;
+  }
+  .intro-section h1 {
+    font-size: 2.5rem;
+  }
+  .intro-section .tagline {
+    font-size: 1.2rem;
+  }
+  .auth-box {
     padding: 1.8rem 2rem;
   }
-
+  .auth-forms-wrapper {
+      height: 550px;
+  }
   .form-title {
     font-size: 1.8rem;
   }
-
   .input-group {
     padding: 0.8rem 0;
   }
-
   .icons i {
     padding: 0.6rem 1.2rem;
     font-size: 1.3rem;
     margin: 0 10px;
   }
-
   .links {
     padding: 0 2rem;
     font-size: 0.95rem;
   }
 }
 
-/* Utility classes for form visibility (from style.css) */
+/* Utility classes for form visibility */
 .hidden {
-  display: none !important;
+  display: block !important;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  transform: translateX(-100px);
 }
 
 .visible {
   display: block !important;
   opacity: 1;
   pointer-events: auto;
-  transition: opacity 0.3s ease;
-}
-
-/* --- From original styleA.css (excluding redundant modal styles) --- */
-
-/* Color Palette variables (if not already defined in style.css, otherwise remove) */
-/* Assuming these are intended as variables for other elements */
-:root {
-  --light-blue: #d1e8ee;
-  --primary-blue: rgb(125, 125, 235);
-  --primary-blue-dark: hsl(227, 90%, 40%);
-  --background-dark: rgba(14, 16, 61, 0.9);
-  --text-dark: #222;
-}
-
-/* Body styles (some overlap with style.css, but keeping for specific styleA.css properties) */
-body {
-  /* background-image, background-repeat, background-size, background-position, height, color are already in style.css */
-  /* Keeping font-family if it's different or intended to override */
-  font-family: 'Georgia', serif; /* This will override Poppins if placed after */
-}
-
-.center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.full-height {
-  height: 100%;
-}
-
-/* Top links (some overlap, but keeping styleA.css specifics) */
-.top-links {
-  background-color: var(--background-dark); /* Using variable */
-  box-shadow: 0 2px 8px rgba(0,0,0,0.3); /* Duplicated, but harmless */
-}
-
-.top-links a {
-  background-color: var(--background-dark); /* Using variable */
-  padding: 6px 12px; /* Slightly different padding */
-  border-radius: 10px; /* Slightly different border-radius */
-  margin: 0 6px; /* Slightly different margin */
-  transition: 0.3s ease;
-}
-
-.top-links a:hover {
-  background-color: var(--primary-blue-dark); /* Using variable */
-}
-
-/* Container (main content area) */
-.container {
-  background-color: rgba(125, 125, 235, 0.1);
-  backdrop-filter: blur(12px);
-  border-radius: 15px;
-  width: 85%;
-  max-width: 1200px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 60px 50px;
-  box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
-  gap: 40px;
-  box-sizing: border-box;
-}
-
-.left-box,
-.login-box {
-  flex: 1;
-  max-width: 50%;
-}
-
-#websitename {
-  text-decoration: none;
-  color: var(--primary-blue-dark);
-}
-
-@media (max-width: 960px) {
-  .container {
-    flex-direction: column;
-    align-items: center;
-    padding: 40px 30px;
-  }
-
-  .left-box,
-  .login-box {
-    max-width: 100%;
-    width: 100%;
-  }
-
-  .login-box {
-    margin-top: 30px;
-  }
-}
-
-.left-box h1 {
-  font-size: 48px;
-  margin: 0;
-  line-height: 1.2;
-  color: var(--primary-blue-dark);
-}
-
-.left-box .tagline {
-  margin-top: 30px;
-  font-size: 18px;
-  color: var(--primary-blue);
-}
-
-.login-box {
-  background-color: rgba(125, 125, 235, 0.3);
-  box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(12px);
-  padding: 32px;
-  border-radius: 30px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.login-box h2 {
-  font-size: 40px;
-  color: var(--primary-blue-dark);
-  margin-bottom: 20px;
-}
-
-.login-box form {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-}
-
-.login-box input {
-  width: 100%;
-  padding: 15px;
-  border: none;
-  border-radius: 32px;
-  background-color: var(--primary-blue);
-  color: white;
-  font-size: 18px;
-  text-align: center;
-  outline: none;
-  box-sizing: border-box;
-}
-
-.login-box input::placeholder {
-  color: var(--light-blue);
-}
-
-.login-box button {
-  width: 100%;
-  padding: 15px;
-  background-color: var(--primary-blue-dark);
-  color: white;
-  border: none;
-  border-radius: 32px;
-  font-size: 20px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.login-box button:hover {
-  background-color: var(--background-dark);
-}
-
-#login {
-  text-decoration: none;
-}
-
-/* Responsive Layout (from styleA.css - keeping for specific styleA.css media queries) */
-@media (max-width: 960px) {
-  .container {
-    flex-direction: column;
-    align-items: center;
-    padding: 40px 30px;
-  }
-
-  .left-box,
-  .login-box {
-    max-width: 100%;
-    width: 100%;
-  }
-
-  .login-box {
-    margin-top: 30px;
-  }
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  transform: translateX(0);
 }
 
 /* New styles for help modal form */
@@ -567,41 +525,43 @@ body {
 }
 
 .modal-content .help-form-group p {
-  color: #eee; /* Light text for labels */
+  color: var(--text-dark);
   margin-bottom: 8px;
   font-size: 1rem;
+  transition: color 0.3s ease;
 }
 
 .modal-content input[type="text"],
 .modal-content input[type="email"] {
   width: 100%;
   padding: 10px;
-  border: 1px solid #555;
+  border: 1px solid var(--dusty-blue);
   border-radius: 5px;
-  background-color: #444; /* Slightly lighter dark background for inputs */
-  color: #eee; /* Light text for input */
+  background-color: var(--primary-blue);
+  color: var(--text-dark);
   font-size: 1rem;
-  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  box-sizing: border-box;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 .modal-content input[type="text"]::placeholder,
 .modal-content input[type="email"]::placeholder {
-  color: #bbb; /* Lighter placeholder text */
+  color: var(--light-blue);
 }
 
 .modal-content input[type="text"]:focus,
 .modal-content input[type="email"]:focus {
   outline: none;
-  border-color: #888; /* Lighter border on focus */
+  border-color: var(--light-blue);
   box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
 }
 
 .help-submit-btn {
-  display: block; /* Make it a block element to take full width */
+  display: block;
   width: 100%;
   padding: 12px 20px;
   margin-top: 20px;
-  background-color: rgb(125, 125, 235); /* Primary blue color */
+  background-color: var(--primary-blue);
   color: white;
   border: none;
   border-radius: 8px;
@@ -613,6 +573,6 @@ body {
 }
 
 .help-submit-btn:hover {
-  background-color: hsl(227, 90%, 40%); /* Darker blue on hover */
+  background-color: var(--primary-blue-dark);
   box-shadow: 0 6px 15px rgba(50, 50, 150, 0.6);
 }
