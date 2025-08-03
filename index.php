@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AppName - Login</title>
-  <link rel="stylesheet" href="styles.css"/> <!-- Assuming 'styles.css' is your combined stylesheet -->
+  <link rel="stylesheet" href="styles.css"/> 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet" />
 </head>
@@ -48,7 +48,7 @@
        <input type="submit" class="btn" value="Sign Up" name="signUp">
       </form>
       <p class="or">
-        --------OR--------
+        OR
       </p>
       <div class="icons">
         <i class="fab fa-google"></i>
@@ -104,15 +104,17 @@
         <li>Please check your internet connection </li>
       </ul>
       <!-- New form elements start here -->
-      <div class="help-form-group">
-        <p>If you have any other query type Here:</p>
-        <input type="text" id="helpQuery" placeholder="Type your query...">
-      </div>
-      <div class="help-form-group">
-        <p>Please Enter Your Email to Contact you:</p>
-        <input type="email" id="helpEmail" placeholder="Enter your email...">
-      </div>
-      <button class="help-submit-btn" id="submitQueryButton">Submit</button>
+      <form action = "helpQuerySubmit.php" method = "post">
+        <div class="help-form-group">
+          <p>If you have any other query type Here:</p>
+          <input type="text" id="helpQuery" name = "helpQuery" placeholder="Type your query...">
+        </div>
+        <div class="help-form-group">
+          <p>Please Enter Your Email to Contact you:</p>
+          <input type="email" id="helpEmail" name = "helpEmail" placeholder="Enter your email...">
+        </div>
+        <button type = "submit" class="help-submit-btn" name = "submitQueryButton" value = "true" id="submitQueryButton">Submit</button>
+      </form>
       <!-- New form elements end here -->
     </div>
   </div>

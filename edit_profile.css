@@ -1,0 +1,210 @@
+/* Color Palette from homestyle.css for consistency */
+:root {
+  --lightest-bg: #EDECF2;
+  --sidebar-bg: rgba(216, 226, 235, 0.8); /* #D8E2EB */
+  --dusty-blue: #8897AA;
+  --light-lavender: #C8C7D7;
+  --dark-text: #5A6776;
+  --warm-cream-popup: #F4EDE5;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif; /* Consistent with homestyle.css */
+    background-color: var(--lightest-bg); /* Lightest background */
+    color: var(--dark-text); /* Dark text */
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.edit-profile-container {
+    background-color: var(--warm-cream-popup); /* Warm cream background */
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    padding: 40px;
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+}
+
+.edit-profile-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.edit-profile-header h2 {
+    font-size: 2rem;
+    color: var(--dark-text);
+    flex-grow: 1; /* Allow heading to take available space */
+    text-align: center;
+    margin-left: -50px; /* Counteract back button space */
+}
+
+.back-btn {
+    background-color: transparent;
+    border: none;
+    color: var(--dusty-blue);
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.3s ease;
+}
+
+.back-btn:hover {
+    color: var(--dark-text);
+}
+
+.edit-profile-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    text-align: left;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: var(--dark-text);
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--sidebar-bg); /* Light border */
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: var(--lightest-bg); /* Light background for inputs */
+    color: var(--dark-text);
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--dusty-blue);
+    box-shadow: 0 0 0 3px rgba(136, 151, 170, 0.3); /* Dusty blue shadow */
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.form-group small {
+    display: block;
+    margin-top: 5px;
+    font-size: 0.85rem;
+    color: var(--dusty-blue);
+}
+
+/* Profile Picture Upload Specific Styles */
+.profile-pic-upload {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.profile-pic-preview {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: var(--dusty-blue); /* Placeholder color */
+    background-size: cover;
+    background-position: center;
+    border: 4px solid var(--light-lavender);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+input[type="file"] {
+    display: none; /* Hide the default file input */
+}
+
+.upload-btn {
+    background-color: var(--dusty-blue);
+    color: var(--lightest-bg);
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.upload-btn:hover {
+    background-color: var(--light-lavender);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+
+.save-changes-btn {
+    background-color: var(--dark-text); /* Dark text color for save button */
+    color: var(--warm-cream-popup); /* Light text */
+    padding: 15px 30px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.save-changes-btn:hover {
+    background-color: #4A5766; /* Slightly lighter dark text on hover */
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .edit-profile-container {
+        padding: 25px;
+    }
+
+    .edit-profile-header {
+        flex-direction: column;
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+
+    .edit-profile-header h2 {
+        font-size: 1.8rem;
+        margin-left: 0;
+    }
+
+    .back-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .profile-pic-preview {
+        width: 120px;
+        height: 120px;
+    }
+
+    .upload-btn, .save-changes-btn {
+        width: 100%;
+    }
+}

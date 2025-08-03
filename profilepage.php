@@ -12,46 +12,61 @@
   <div class="sidebar">
     <div class="icon" id="profile-home-btn"><i class="fas fa-home"></i></div>
     <div class="icon" id="profile-settings-btn"><i class="fa-solid fa-gear"></i></div>
+  </div>
   
   <div class="profile-container" id="profile-container">
     <div class="profile-header">
-      <div class="profile-pic"></div>
+      <div class="profile-pic" id="profile-pic" style="background-image: url('https://placehold.co/180x180/8897AA/FFFFFF?text=Profile');"></div>
       <div class="profile-info">
         <h1 class="username" id="profile-username">Loading...</h1>
         <div class="stats">
-          <div><strong id="post-count">0</strong><br>post</div>
+          <div><strong id="post-count">0</strong><br>posts</div>
           <div><strong>0</strong><br>followers</div>
           <div><strong>0</strong><br>following</div>
         </div>
         <div class="bio">
-          <p><strong id="profile-fullname">.......</strong><br><span id="profile-bio">
-            ....</span></p>
+          <p><strong id="profile-fullname">Your Full Name</strong><br><span id="profile-bio">A short bio about yourself.</span></p>
         </div>
         <div class="buttons">
-          <button id="edit-profile-btn">edit-profile</button>
-          <button id="view-archive-btn">view archive</button>
+          <button id="edit-profile-btn">Edit Profile</button>
+          <button id="view-archive-btn">View Archive</button>
         </div>
       </div>
     </div>
 
     <div class="center-icon"><i class="fas fa-image"></i></div>
 
-    <div class="post-grid" id="user-posts-container"></div>
+    <div class="post-grid" id="user-posts-container">
+      <!-- User posts will be loaded here dynamically -->
+      <p class="no-posts-message">No posts yet. Go to home to create one!</p>
     </div>
   </div>
 
-   <div class="popup-overlay hidden" id="settings-popup">
-    <div class="main-popup-content">
+  <!-- Settings Popup -->
+  <div class="popup-overlay hidden" id="settings-popup">
+    <div class="popup-content settings-popup-content">
+      <button class="popup-close-btn" id="settings-close-btn">&times;</button>
+      <h2>Settings</h2>
       <ul>
-        <li><a href="index.html">Website</a></li>
-        <li data-action="qrcode">QR Code</li>
-        <li data-action="privacy">Privacy</li>
-        <li data-action="logout">Log Out</li>
-        <li data-action="cancel">Cancel</li>
+        <li><a href="homepage.php" id="settings-website-link">Website</a></li>
+        <li id="settings-qrcode-btn">QR Code</li>
+        <li id="settings-privacy-btn">Privacy</li>
+        <li id="settings-logout-btn">Log Out</li>
+        <li id="settings-cancel-btn">Cancel</li>
       </ul>
     </div>
   </div>
 
+  <!-- Under Construction / Coming Soon Modal -->
+  <div class="popup-overlay hidden" id="underConstructionModal">
+    <div class="popup-content under-construction-content">
+      <h2>Coming Soon!</h2>
+      <p>This feature is currently under construction. Please check back later!</p>
+      <button class="popup-btn confirm" id="under-construction-ok-btn">OK</button>
+    </div>
+  </div>
+
+  <!-- Logout Confirmation Popup (Existing) -->
   <div class="popup-overlay hidden" id="logout-confirm-popup">
     <div class="logout-confirm-content">
       <h2>Log Out</h2>

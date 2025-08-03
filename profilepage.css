@@ -1,0 +1,419 @@
+/* Color Palette from homestyle.css for consistency */
+:root {
+  --lightest-bg: #EDECF2;
+  --sidebar-bg: rgba(216, 226, 235, 0.8); /* #D8E2EB */
+  --dusty-blue: #8897AA;
+  --light-lavender: #C8C7D7;
+  --dark-text: #5A6776;
+  --warm-cream-popup: #F4EDE5;
+}
+
+body {
+  margin: 0;
+  font-family: 'Playfair Display', serif;
+  background: url('images/bg6.jpg') no-repeat center center/cover;
+  color: white;
+  min-height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 25%;
+  left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  z-index: 10;
+}
+
+.icon {
+  background-color: var(--sidebar-bg); /* Matching sidebar bg from homestyle */
+  color: var(--dark-text); /* Dark text for icons */
+  padding: 18px;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.icon:hover {
+  background-color: var(--light-lavender); /* Light lavender on hover */
+  transform: scale(1.05);
+}
+
+/* Main profile container */
+.profile-container {
+  margin-left: 120px;
+  padding: 40px 60px;
+  transition: filter 0.3s ease-in-out;
+}
+
+/* Blur effect for background when popup is active */
+.profile-container.blur-it {
+    filter: blur(5px) brightness(0.7);
+    pointer-events: none;
+}
+
+/* Other Profile Styles */
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  background-color: rgba(255, 255, 255, 0.1); /* Slightly transparent white */
+  backdrop-filter: blur(10px); /* Blur effect for the header */
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.profile-pic {
+  width: 180px;
+  height: 180px;
+  background-color: var(--dusty-blue); /* Dusty blue placeholder */
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  border: 4px solid var(--light-lavender); /* Light border */
+  flex-shrink: 0; /* Prevent shrinking */
+}
+
+.username {
+  font-size: 2.2rem;
+  margin: 0;
+  color: var(--dark-text); /* Dark text for username */
+}
+
+.stats {
+  display: flex;
+  gap: 30px;
+  margin: 10px 0;
+  font-size: 1rem;
+  color: var(--dusty-blue); /* Dusty blue for stats text */
+}
+
+.stats strong {
+  color: var(--dark-text); /* Dark text for numbers */
+  font-size: 1.2rem;
+}
+
+.stats div {
+  text-align: center;
+}
+
+.bio {
+  font-size: 1rem;
+  margin-top: 10px;
+  color: var(--dark-text); /* Dark text for bio */
+}
+
+.bio strong {
+  color: var(--dusty-blue); /* Dusty blue for full name */
+}
+
+.buttons {
+  margin-top: 20px;
+  display: flex;
+  gap: 15px;
+}
+
+.buttons button {
+  background-color: var(--dusty-blue); /* Dusty blue button */
+  color: var(--lightest-bg); /* Lightest color for text */
+  border: none;
+  padding: 12px 25px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.buttons button:hover {
+  background-color: var(--light-lavender); /* Light lavender on hover */
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+
+.center-icon {
+  background-color: var(--sidebar-bg); /* Matching sidebar bg */
+  color: var(--dark-text); /* Dark text for icon */
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 30px auto;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.post-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  width: 90%;
+  margin: 20px auto;
+}
+
+.post-grid-item {
+  width: 100%;
+  padding-top: 100%;
+  position: relative;
+  border-radius: 15px;
+  overflow: hidden;
+  background-color: #333; /* Dark background for posts */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.post-grid-item img, .post-grid-item video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.no-posts-message {
+  color: var(--dusty-blue); /* Dusty blue for subtle text */
+  font-size: 1.2rem;
+  text-align: center;
+  grid-column: 1 / -1; /* Span across all columns */
+  margin-top: 50px;
+}
+
+/* === STYLES FOR ALL POPUPS === */
+.hidden { display: none !important; }
+
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(40, 40, 40, 0.6); /* Darkened overlay for contrast */
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-content {
+  background-color: var(--warm-cream-popup); /* Warm cream for popups */
+  padding: 30px 40px;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  position: relative;
+}
+
+.popup-content h2 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: var(--dark-text); /* Darker heading */
+}
+
+.popup-content p {
+  margin-bottom: 25px;
+  color: var(--dusty-blue); /* Softer text color */
+  line-height: 1.6;
+}
+
+.popup-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.popup-btn {
+  padding: 10px 25px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.popup-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.popup-btn.confirm {
+  background-color: var(--dusty-blue); /* Dusty blue for confirm */
+  color: var(--warm-cream-popup); /* Light text */
+}
+
+.popup-btn.cancel {
+  background-color: var(--sidebar-bg); /* Sidebar bg for cancel */
+  color: var(--dark-text); /* Dark text */
+}
+
+.popup-close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: transparent;
+  border: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: var(--light-lavender); /* Light lavender for close icon */
+  transition: color 0.2s;
+}
+
+.popup-close-btn:hover {
+  color: var(--dusty-blue); /* Dusty blue on hover */
+}
+
+/* Style for the Main Settings Menu */
+.settings-popup-content {
+  background-color: var(--warm-cream-popup); /* Light background for settings popup */
+  color: var(--dark-text); /* Dark text */
+  border-radius: 15px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  padding: 20px 0; /* Adjust padding for list items */
+}
+.settings-popup-content h2 {
+    margin-bottom: 20px;
+    padding: 0 25px; /* Match list item padding */
+}
+.settings-popup-content ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.settings-popup-content li {
+  padding: 15px 25px;
+  border-bottom: 1px solid var(--sidebar-bg); /* Light border */
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  font-family: 'Segoe UI', sans-serif; /* Using Segoe UI from homestyle */
+  color: var(--dark-text); /* Dark text for list items */
+  font-size: 1.1rem;
+}
+.settings-popup-content li:hover {
+  background-color: var(--sidebar-bg); /* Sidebar bg on hover */
+}
+.settings-popup-content li:last-child {
+  border-bottom: none;
+}
+.settings-popup-content li a {
+  color: var(--dark-text); /* Dark text for links */
+  text-decoration: none;
+  display: block;
+}
+
+/* Style for the Under Construction / Coming Soon Popup */
+.under-construction-content {
+  background-color: var(--warm-cream-popup); /* Warm cream for content */
+  color: var(--dark-text); /* Dark text */
+  padding: 30px 40px;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 350px;
+  text-align: center;
+  font-family: 'Segoe UI', sans-serif;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+.under-construction-content h2 { margin: 0 0 10px 0; font-size: 24px; }
+.under-construction-content p { margin: 0 0 25px 0; font-size: 16px; color: var(--dusty-blue); }
+
+/* Style for the Special Logout Confirmation Popup (Existing, adjusted colors) */
+.logout-confirm-content {
+  background-color: var(--warm-cream-popup); /* Warm cream for content */
+  color: var(--dark-text); /* Dark text */
+  padding: 30px 40px;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  font-family: 'Segoe UI', sans-serif;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+.logout-confirm-content h2 { margin: 0 0 10px 0; font-size: 24px; }
+.logout-confirm-content p { margin: 0 0 25px 0; font-size: 16px; color: var(--dusty-blue); }
+.logout-confirm-buttons { display: flex; justify-content: center; gap: 15px; }
+.logout-confirm-buttons button { border: none; padding: 12px 30px; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; transition: transform 0.2s ease; }
+.logout-confirm-buttons button:hover { transform: scale(1.05); }
+.logout-btn-confirm { background-color: #e74c3c; color: white; } /* Keeping red for logout confirm */
+.logout-btn-cancel { background-color: var(--sidebar-bg); color: var(--dark-text); } /* Matching cancel button */
+
+/* Media Queries for responsiveness */
+@media (max-width: 768px) {
+  .profile-container {
+    margin-left: 0;
+    padding: 20px;
+  }
+
+  .sidebar {
+    position: relative;
+    top: auto;
+    left: auto;
+    flex-direction: row;
+    justify-content: center;
+    padding: 15px 0;
+    width: 100%;
+    gap: 15px;
+    background-color: var(--sidebar-bg);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+
+  .profile-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .profile-pic {
+    width: 120px;
+    height: 120px;
+  }
+
+  .username {
+    font-size: 1.8rem;
+  }
+
+  .stats {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .buttons {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .buttons button {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  .center-icon {
+    margin: 20px auto;
+  }
+
+  .post-grid {
+    grid-template-columns: 1fr; /* Single column on small screens */
+    width: 100%;
+    padding: 0 10px;
+  }
+}
