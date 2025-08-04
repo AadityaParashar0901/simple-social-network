@@ -113,34 +113,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Publish button functionality
-    if (publishBtn) {
-        publishBtn.addEventListener('click', function() {
-            const caption = captionInput.value;
-            const file = fileInput.files[0];
-            
-            // In a real implementation, you would send this data to a server
-            // For now, we'll just show an alert and reset the form
-            if (caption || file) {
-                alert('Post published successfully!');
-                // Reset the form
-                captionInput.value = '';
-                fileInput.value = '';
-                mediaPreviewContainer.innerHTML = '';
-                mediaPreviewContainer.style.display = 'none';
-                // Close the post creation page with animation
-                addAnimation('blur-it');
-                setTimeout(() => {
-                    postPageContent.classList.add('hidden');
-                    homePageContent.classList.remove('hidden');
-                    mainContainer.classList.remove('blur-it');
-                }, 300);
-            } else {
-                alert('Please add a caption or media to your post.');
-            }
-        });
-    }
-    
     // Logout button - show logout popup
     if (logoutBtn) {
         logoutBtn.addEventListener('click', function() {
