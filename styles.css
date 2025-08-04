@@ -44,7 +44,7 @@ html.dark-mode {
 }
 
 body {
-  background-image: url('https://storage.googleapis.com/gemini-prod-us-west1-423908-4102/images/6182a461-71b3-4d7a-a621-0a6e355c3c0f.png');
+  background-image: url('config/bg1.png');
   background-size: cover;
   background-position: center;
   min-height: 100vh;
