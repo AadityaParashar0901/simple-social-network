@@ -51,7 +51,7 @@
            <input type="submit" class="btn" value="Sign In" name="signIn">
           </form>
           <p class="or">
-            --------OR--------
+            OR
           </p>
           <div class="icons">
             <i class="fab fa-google"></i>
@@ -118,15 +118,17 @@
         <li>Your <strong>password</strong> is case-sensitive</li>
         <li>Please check your internet connection </li>
       </ul>
-      <div class="help-form-group">
-        <p>If you have any other query type Here:</p>
-        <input type="text" id="helpQuery" placeholder="Type your query...">
-      </div>
-      <div class="help-form-group">
-        <p>Please Enter Your Email to Contact you:</p>
-        <input type="email" id="helpEmail" placeholder="Enter your email...">
-      </div>
-      <button class="help-submit-btn" id="submitQueryButton">Submit</button>
+      <form action = "helpQuerySubmit.php" method = "post">
+        <div class="help-form-group">
+          <p>If you have any other query type Here:</p>
+          <input type="text" id="helpQuery" name = "helpQuery" placeholder="Type your query...">
+        </div>
+        <div class="help-form-group">
+          <p>Please Enter Your Email to Contact you:</p>
+          <input type="email" id="helpEmail" name = "helpEmail" placeholder="Enter your email...">
+        </div>
+        <button type = "submit" class="help-submit-btn" name = "submitQueryButton" value = "true" id="submitQueryButton">Submit</button>
+      </form>
     </div>
   </div>
 
