@@ -93,6 +93,7 @@ if (isset($_REQUEST['publish-btn']) && $_REQUEST['publish-btn'] == "true") {
   </div>
 
   <script src="home.js"></script>
+  <script src="dark-mode.js"></script>
   <?php
     function addPost($description, $url, $username) { ?>
       <script>

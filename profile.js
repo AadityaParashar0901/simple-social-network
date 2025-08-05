@@ -12,7 +12,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const settingsPopup = document.getElementById('settings-popup');
     const settingsCloseBtn = document.getElementById('settings-close-btn');
-    // Removed settingsWebsiteLink reference
     const settingsQrcodeBtn = document.getElementById('settings-qrcode-btn');
     const settingsPrivacyBtn = document.getElementById('settings-privacy-btn');
     const settingsLogoutBtn = document.getElementById('settings-logout-btn');
@@ -130,9 +129,11 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    if (settingsCancelBtn) {
-        settingsPopup.classList.add('hidden');
-        toggleBlur(false);
+     if (settingsCancelBtn) {
+        settingsCancelBtn.addEventListener('click', function() {
+            settingsPopup.classList.add('hidden');
+            toggleBlur(false);
+        });
     }
 
     // --- Under Construction Modal Functionality ---

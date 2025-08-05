@@ -18,22 +18,6 @@
   --dusty-blue: #a2b2c2;
 }
 
-html.dark-mode {
-  /* Dark Mode Overrides */
-  --light-blue: #616161;
-  --primary-blue: #424242;
-  --primary-blue-dark: #bdbdbd;
-  --background-dark: rgba(0, 0, 0, 0.9);
-  --text-dark: #eeeeee;
-  --main-bg-color: #2e2e2e;
-  --form-bg-color: rgba(66, 66, 66, 0.5);
-  --form-border-color: rgba(97, 97, 97, 0.5);
-  --form-shadow-color: rgba(0, 0, 0, 0.5);
-  --intro-heading-color: #eeeeee;
-  --intro-tagline-color: #bdbdbd;
-  --warm-cream-popup: #424242;
-}
-
 
 /* Reset and base styles */
 * {

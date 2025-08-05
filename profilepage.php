@@ -86,5 +86,6 @@
   </div>
 
   <script src="profile.js"></script>
+  <script src="dark-mode.js"></script>
 </body>
 </html>

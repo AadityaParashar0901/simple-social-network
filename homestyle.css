@@ -1,14 +1,3 @@
-/*
-Color Palette:
---lightest-bg: #EDECF2; (Light body background)
---sidebar-bg: rgba(216, 226, 235, 0.8); (Sidebar, light button backgrounds)
---dusty-blue: #8897AA; (Primary button, subtle text)
---light-lavender: #C8C7D7; (Hover effect, close icon)
---dark-text: #5A6776; (Headings, main text)
---warm-cream-popup: #F4EDE5; (Popup backgrounds)
---post-bg: rgba(255, 255, 255, 0.7); (Home page post background)
---post-border: #D1E8EE; (Home page post border)
-*/
 
 /* Dark Mode Color Palette (from user's image) */
 :root {
@@ -24,18 +13,20 @@ Color Palette:
   --input-bg: #EDECF2; /* For inputs like textarea in create post */
 }
 
+/* Dark Mode Overrides for homestyle.css */
 html.dark-mode {
-  /* Dark Mode Overrides */
-  --lightest-bg: #2e2e2e; /* Very Dark Grey */
-  --sidebar-bg: #424242; /* Dark Grey */
-  --dusty-blue: #616161; /* Medium Grey */
-  --light-lavender: #bdbdbd; /* Light Grey */
-  --dark-text: #eeeeee; /* Very Light Grey */
-  --warm-cream-popup: #424242; /* Dark Grey for popups */
-  --post-bg: #424242; /* Dark Grey for posts */
-  --post-border: #616161; /* Medium Grey border */
-  --input-bg: #616161; /* Dark mode input background */
+  /* NEW Dark Mode Palette */
+  --lightest-bg: #121212; /* charcoal black */
+  --sidebar-bg: #2a2a2a; /* Lighter charcoal for component backgrounds */
+  --dusty-blue: #888888; /* soft gray */
+  --light-lavender: #B0B0B0; /* medium gray */
+  --dark-text: #E0E0E0; /* light gray */
+  --warm-cream-popup: #2a2a2a; /* Lighter charcoal for popups */
+  --post-bg: #2a2a2a; /* Lighter charcoal for posts */
+  --post-border: #444444; /* dark gray */
+  --input-bg: #444444; /* dark gray for inputs */
 }
+
 
 * {
   margin: 0;

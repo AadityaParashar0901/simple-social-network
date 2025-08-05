@@ -21,14 +21,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const mediaPreviewContainer = document.getElementById('media-preview-container');
     const captionInput = document.getElementById('caption-input');
     const mainContainer = document.getElementById('main-container');
-
-    // --- Dark Mode Initialization ---
-    // Check localStorage for dark mode preference and apply it on load
-    if (localStorage.getItem('darkMode') === 'enabled') {
-        document.documentElement.classList.add('dark-mode');
-    } else {
-        document.documentElement.classList.remove('dark-mode');
-    }
     
     // Function to add animation class to container
     function addAnimation(animationClass) {

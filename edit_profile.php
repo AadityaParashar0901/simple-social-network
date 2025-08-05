@@ -58,5 +58,6 @@
     </div>
 
     <script src="edit_profile.js"></script>
+    <script src="dark-mode.js"></script>
 </body>
 </html>

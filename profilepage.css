@@ -10,15 +10,33 @@
   --post-bg: #333; /* Dark background for posts */
 }
 
+/* Dark Mode Overrides for profilepage.css */
 html.dark-mode {
-  /* Dark Mode Overrides */
-  --lightest-bg: #2e2e2e; /* Very Dark Grey */
-  --sidebar-bg: #424242; /* Dark Grey */
-  --dusty-blue: #616161; /* Medium Grey */
-  --light-lavender: #bdbdbd; /* Light Grey */
-  --dark-text: #eeeeee; /* Very Light Grey */
-  --warm-cream-popup: #424242; /* Dark Grey for popups */
-  --post-bg: #424242; /* Dark Grey for posts */
+  /* NEW Dark Mode Palette */
+  --lightest-bg: #121212; /* charcoal black */
+  --sidebar-bg: #2a2a2a; /* Lighter charcoal for component backgrounds */
+  --dusty-blue: #888888; /* soft gray */
+  --light-lavender: #B0B0B0; /* medium gray */
+  --dark-text: #E0E0E0; /* light gray */
+  --warm-cream-popup: #2a2a2a; /* Lighter charcoal for popups */
+  --post-bg: #2a2a2a; /* Lighter charcoal for posts */
+  --post-border: #444444; /* dark gray */
+  --input-bg: #444444; /* dark gray for inputs */
+
+  /* Mapping new palette to existing variable roles for dark mode */
+  --main-bg-color: var(--lightest-bg); /* Main page background */
+  --background-dark: var(--sidebar-bg); /* General dark background */
+  --text-dark: var(--dark-text); /* Primary text color in dark mode */
+  --primary-blue: var(--light-lavender); /* Secondary accents/text */
+  --primary-blue-dark: var(--dark-text); /* Primary text/headings */
+  --form-bg-color: var(--sidebar-bg); /* Form background */
+  --form-border-color: var(--dusty-blue); /* Form border */
+  --form-shadow-color: rgba(0, 0, 0, 0.8); /* Darker shadow for dark mode */
+  --intro-heading-color: var(--dark-text); /* Intro heading */
+  --intro-tagline-color: var(--light-lavender); /* Intro tagline */
+  /* --warm-cream-popup is already mapped directly above */
+  /* --dusty-blue is already mapped directly above */
+  --light-blue: var(--dusty-blue); /* Map existing light-blue role to new dusty-blue */
 }
 
 body {

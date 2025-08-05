@@ -8,14 +8,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const genderSelect = document.getElementById('gender');
     const emailInput = document.getElementById('email');
 
-    // --- Dark Mode Initialization ---
-    // Check localStorage for dark mode preference and apply it on load
-    if (localStorage.getItem('darkMode') === 'enabled') {
-        document.documentElement.classList.add('dark-mode');
-    } else {
-        document.documentElement.classList.remove('dark-mode');
-    }
-
     // --- Load existing data (placeholder) ---
     let currentProfileData = {
         userId: 'JohnDoe',

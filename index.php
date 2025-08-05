@@ -90,7 +90,7 @@
            <input type="submit" class="btn" value="Sign Up" name="signUp">
           </form>
           <p class="or">
-            -------OR------
+            ------OR------
           </p>
           <div class="icons">
             <i class="fab fa-google"></i>
@@ -152,6 +152,7 @@
     </div>
   </div>
   <script src="script.js"></script>
+  <script src="dark-mode.js"></script>
 </body>
 
 </html>
