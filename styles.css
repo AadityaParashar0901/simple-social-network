@@ -306,7 +306,7 @@ input:not(:placeholder-shown) ~ label {
   font-size: 1rem;
   margin-top: 1rem;
   text-align: center;
-  color: var(--dusty-blue);
+  color: var(--primary-blue);
   font-weight: 700;
   user-select: none;
   transition: color 0.3s ease;

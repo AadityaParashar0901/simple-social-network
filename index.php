@@ -51,7 +51,7 @@
            <input type="submit" class="btn" value="Sign In" name="signIn">
           </form>
           <p class="or">
-            OR
+            ------OR------
           </p>
           <div class="icons">
             <i class="fab fa-google"></i>
@@ -90,7 +90,7 @@
            <input type="submit" class="btn" value="Sign Up" name="signUp">
           </form>
           <p class="or">
-            --------OR--------
+            ------OR------
           </p>
           <div class="icons">
             <i class="fab fa-google"></i>
