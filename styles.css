@@ -237,7 +237,7 @@ input::placeholder {
 }
 
 label {
-  color: var(--dusty-blue);
+  color: var(--primary-blue-dark);
   position: absolute;
   left: 3rem;
   top: 50%;
@@ -339,12 +339,15 @@ input:not(:placeholder-shown) ~ label {
 
 /* Links below forms */
 .links {
-  display: flex;
-  justify-content: space-around;
-  padding: 0 4rem;
+  display: flex; /* Use flexbox to align items in a row */
+  justify-content: center; /* Center the items horizontally */
+  align-items: center; /* Vertically align the items */
+  padding: 0 1rem;
   margin-top: 1rem;
   font-weight: 700;
   user-select: none;
+  flex-wrap: nowrap; /* Prevents wrapping to a new line */
+  gap: 10px; /* Adds a small gap between the text and button */
 }
 
 .links p {

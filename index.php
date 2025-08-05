@@ -58,7 +58,7 @@
             <i class="fab fa-facebook"></i>
           </div>
           <div class="links">
-            <p>Don't have account yet?</p>
+            <p>Don't have any account yet?</p>
             <button id="signUpButton">Sign Up</button>
           </div>
         </div>
@@ -90,7 +90,7 @@
            <input type="submit" class="btn" value="Sign Up" name="signUp">
           </form>
           <p class="or">
-            ------OR------
+            -------OR------
           </p>
           <div class="icons">
             <i class="fab fa-google"></i>
